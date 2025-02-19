@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Make builds reproducible
+* Add conflicts/replaces metadata on puppet-agent
 
 ## 8.11.0
 
