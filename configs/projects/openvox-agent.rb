@@ -163,10 +163,8 @@ project 'openvox-agent' do |proj|
   end
 
   # make sure we can replace puppet-agent in place for the rename
-  if platform.is_rpm?
-    proj.replaces 'puppet-agent'
-    proj.conflicts 'puppet-agent'
-  end
+  proj.replaces 'puppet-agent'
+  proj.conflicts 'puppet-agent'
 
   proj.timeout 7200 if platform.is_windows?
 end
