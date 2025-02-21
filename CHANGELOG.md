@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 8.12.1
+
+* Fix version in puppet component
+
 ## 8.12.0
 
 * Make builds reproducible
