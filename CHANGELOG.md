@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 8.13.0
+
+* Added MacOS 15 (Sequoia) ARM64 support. No changes to other OS packages. Downloads for MacOS builds can be found at https://artifacts.overlookinfratech.com/#macos/
+
 ## 8.12.1
 
 * Fix version in puppet component
