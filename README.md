@@ -12,13 +12,13 @@ Overview
 ---
 The puppet agent is a collection of software that is required for puppet and
 its dependencies to run. This includes
-[puppet](https://github.com/puppetlabs/puppet),
-[facter](https://github.com/puppetlabs/facter), and other Puppet software, but
+[puppet](https://github.com/OpenVoxProject/puppet),
+[facter](https://github.com/OpenVoxProject/facter), and other Puppet software, but
 also vendored dependencies like ruby, curl, openssl, and more.
 
 This repository contains configuration to build puppet-agent and the facter gem
 for all of Puppet's supported platforms using
-[vanagon](https://github.com/puppetlabs/vanagon), a packaging utility.
+[vanagon](https://github.com/OpenVoxProject/vanagon), a packaging utility.
 
 The full list of software components built into the puppet agent and the
 facter gem can be found in their [project definitions](configs/projects/), and
@@ -28,12 +28,12 @@ directory](configs/components/).
 Components that are not developed by Puppet (like ruby, curl, or openssl) are
 built separately into a tarball and consumed here in the
 [puppet-runtime](configs/components/puppet-runtime.rb) component. See the
-[puppet-runtime](https://github.com/puppetlabs/puppet-runtime) project for more
+[puppet-runtime](https://github.com/OpenVoxProject/puppet-runtime) project for more
 information and a full list of the vendored dependencies it provides.
 
 pxp-agent is built separately into a tarball and consumed here in the
 [pxp-agent](configs/components/puppet-pxp-agent.rb) component. See the
-[pxp-agent-vanagon](https://github.com/puppetlabs/pxp-agent-vanagon) project for more information.
+[pxp-agent-vanagon](https://github.com/OpenVoxProject/pxp-agent-vanagon) project for more information.
 
 Runtime Requirements
 ---
@@ -47,7 +47,7 @@ for each desired package.
 The location of Vanagon in the Gemfile can be overridden with the environment variable `VANAGON_LOCATION`. Can be set prior to `bundle install` or updated with `bundle update`.
 
 * `0.3.14` - Specific tag from the Vanagon git repo
-* `https://github.com/puppetlabs/vanagon#version` - Remote git location and version (can be a ref, branch or tag)
+* `https://github.com/OpenVoxProject/vanagon#version` - Remote git location and version (can be a ref, branch or tag)
 * `file:///workspace/vanagon` - Absolute file path
 * `file://../vanagon` - File path relative to the project directory
 
@@ -60,7 +60,7 @@ Building puppet-agent or the facter gem
 If you wish to build puppet-agent yourself:
 
 1. First, build the
-   [puppet-runtime](https://github.com/puppetlabs/puppet-runtime) for your
+   [puppet-runtime](https://github.com/OpenVoxProject/puppet-runtime) for your
    target platform and agent version.
 2. Run `bundle install` to install required ruby dependencies.
 3. Update the `location` and `version` in the [puppet-runtime
@@ -84,7 +84,7 @@ If you wish to build puppet-agent yourself:
     the side of getting this work out in public rather than having everything
     perfect. If you have your own mirror of the components of puppet-agent, you
     can also use a rewrite rule. See the [Vanagon
-    README](https://github.com/puppetlabs/vanagon/blob/master/examples/projects/project.rb#L26)
+    README](https://github.com/OpenVoxProject/vanagon/blob/master/examples/projects/project.rb#L48)
     for an example.
 5. Now use vanagon to build the puppet-agent. Run the following:
 
@@ -131,7 +131,7 @@ git commit -m "(maint) Restore promoted components refs after merge from stable"
 
 Issues
 ---
-File issues in the [Puppet Agent (PA) project](https://tickets.puppet.com/browse/PA) on the Puppet Labs Jira site. Issues with individual components should be filed in their respective projects.
+File issues in the [Puppet Agent project](https://github.com/OpenVoxProject/openvox-agent) on Github. Issues with individual components should be filed in their respective projects.
 
 License
 ---
