@@ -42,7 +42,7 @@ Puppet itself is licensed by Puppet, Inc. under the Apache license. Puppet, Inc.
 
 ## Support
 
-Please log issues in this project's [GitHub Issues](/issues).
+Please log issues in this project's [GitHub Issues](https://github.com/OpenVoxProject/puppet/issues).
 Other channels for getting help can be found at our
 [support page](https://voxpupuli.org/openvox/support/),
 including the mailing list and other community spaces available
