@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Fixed issue on Fedora 41 with dnf5. We were using deprecated yum flags -d and -e. Since we don't support anything older than EL7, in which these were already deprecated, they have been removed.
+
 ## 8.13.0
 
 * Added MacOS 15 (Sequoia) ARM64 support. No changes to other OS packages. Downloads for MacOS builds can be found at https://artifacts.overlookinfratech.com/#macos/
