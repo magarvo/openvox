@@ -194,7 +194,7 @@ component "puppet" do |pkg, settings, platform|
 
     pkg.install_file "ext/windows/service/daemon.bat", "#{settings[:bindir]}/daemon.bat"
     pkg.install_file "ext/windows/service/daemon.rb", "#{settings[:service_dir]}/daemon.rb"
-    pkg.install_file "../wix/icon/puppet.ico", "#{settings[:miscdir]}/puppet.ico"
+    pkg.install_file "../wix/icon/voxpupuli.ico", "#{settings[:miscdir]}/voxpupuli.ico"
     pkg.install_file "../wix/license/LICENSE.rtf", "#{settings[:miscdir]}/LICENSE.rtf"
     pkg.directory settings[:service_dir]
   end
