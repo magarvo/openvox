@@ -112,7 +112,18 @@ project 'openvox-agent' do |proj|
   # Provides augeas, curl, libedit, libxml2, libxslt, openssl, puppet-ca-bundle, ruby and rubygem-*
   proj.component "puppet-runtime"
   proj.component 'openssl-fips' if platform.is_fips?
-  proj.component "pxp-agent" if ENV['NO_PXP_AGENT'].to_s.empty?
+
+  # We are currently not building pxp-agent for Windows because it is unused for
+  # OpenVox aside from execution_wrapper which is soon to be replaced, and because
+  # we're having trouble getting things compiled correctly with the modern toolchain.
+  # For a Windows, only build these if BUILD_WINDOWS_PXP_AGENT is set.
+  # For other platforms, build these unless NO_PXP_AGENT is set.
+  build_pxp_agent = platform.is_windows? ? !ENV['BUILD_WINDOWS_PXP_AGENT'].to_s.empty? : ENV['NO_PXP_AGENT'].to_s.empty?
+  if build_pxp_agent
+    proj.component "pxp-agent"
+  else
+    proj.setting(:exclude_wix_templates, ['service.pxp-agent.wxs.erb'])
+  end
 
   proj.component "puppet"
   proj.component "facter"

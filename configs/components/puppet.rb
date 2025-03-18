@@ -6,15 +6,8 @@ component "puppet" do |pkg, settings, platform|
 
   # Used to compile binary translation files
   # i18n is not supported on Solaris
-  if platform.is_macos?
-    pkg.build_requires "gettext"
-  elsif platform.is_windows?
-    pkg.build_requires "pl-gettext-#{platform.architecture}"
-  elsif platform.is_solaris? || platform.is_aix?
-    # do nothing
-  else #rubocop:disable Lint/DuplicateBranch
-    pkg.build_requires "gettext"
-  end
+  pkg.build_requires "gettext" unless platform.is_solaris? || platform.is_aix?
+  pkg.build_requires "gettext-devel" if platform.is_windows?
 
   platform.get_service_types.each do |servicetype|
     case servicetype
@@ -90,7 +83,7 @@ component "puppet" do |pkg, settings, platform|
   # We do not currently support i18n on Solaris or AIX
   unless platform.is_solaris? || platform.is_aix?
     if platform.is_windows?
-      msgfmt = "/cygdrive/c/tools/pl-build-tools/bin/msgfmt.exe"
+      msgfmt = "/usr/bin/msgfmt.exe"
     elsif platform.is_macos?
       msgfmt = "/usr/local/opt/gettext/bin/msgfmt"
       if platform.architecture == 'arm64' && platform.os_version.to_i >= 13
@@ -121,7 +114,7 @@ component "puppet" do |pkg, settings, platform|
   end
 
   if platform.is_windows?
-    pkg.environment "PATH", "$(shell cygpath -u #{settings[:gcc_bindir]}):$(shell cygpath -u #{settings[:ruby_bindir]}):$(shell cygpath -u #{settings[:bindir]}):/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0"
+    pkg.environment "PATH", "/usr/bin:$(shell cygpath -u #{settings[:gcc_bindir]}):$(shell cygpath -u #{settings[:ruby_bindir]}):$(shell cygpath -u #{settings[:bindir]}):/cygdrive/c/Windows/system32:/cygdrive/c/Windows:/cygdrive/c/Windows/System32/WindowsPowerShell/v1.0"
   end
 
   if platform.is_windows?

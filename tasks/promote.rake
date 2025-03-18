@@ -1,5 +1,3 @@
-require 'open3'
-
 namespace :vox do
   desc 'Promote a component with a given ref into this repo. For puppet-runtime and pxp-agent, use the tag that has been built and uploaded to openvox-artifacts.'
   task :promote, [:component, :ref] do |_, args|

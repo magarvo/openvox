@@ -1,4 +1,4 @@
-require 'open3'
+require 'fileutils'
 
 namespace :vox do
   desc 'Build vanagon project with Docker'
@@ -14,8 +14,10 @@ namespace :vox do
     abort 'You must provide a platform.' if args[:platform].nil? || args[:platform].empty?
     platform = args[:platform]
 
-    engine = platform =~ /^osx-/ ? 'local' : 'docker'
+    engine = platform =~ /^(osx|windows)-/ ? 'local' : 'docker'
     cmd = "bundle exec build #{project} #{platform} --engine #{engine}"
+
+    FileUtils.rm_rf('C:/ProgramFiles64Folder') if platform =~ /^windows-/
 
     puts "Running #{cmd}"
     exitcode = nil

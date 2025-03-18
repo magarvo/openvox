@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='windows-1252'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi' xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <!--
-    Puppet Agent Specific Application data
+    OpenVox Agent Specific Application data
     These directories and files need to be special cased
-    in order to manage the application data for puppet
+    in order to manage the application data for the OpenVox
     agent. The specific special case is that all files
     and folders here need to be persistent across multiple
     installs and uninstalls. We can do so by specifying
@@ -13,7 +13,7 @@
 
     <DirectoryRef Id="TARGETDIR">
       <Directory Id="CommonAppDataFolder" Name="CommonAppData">
-        <Directory Id="APPDATADIR" Name="PuppetLabs">
+        <Directory Id="APPDATADIR" Name="VoxPupuli">
           <Directory Id="pxpAgentDataFolder" Name="pxp-agent">
             <Directory Id="pxpAgentDataFolderVar" Name="var">
               <Directory Id="pxpAgentDataFolderLog" Name="log" />
@@ -47,7 +47,7 @@
     </DirectoryRef>
     <ComponentGroup Id="AppDataComponentGroup" >
       <Component
-        Id="PuppetLabsDataDir"
+        Id="VoxPupuliDataDir"
         Guid="EA55AEDB-3A9E-454E-9389-828341BEB4FC"
         Permanent="yes"
         Directory="APPDATADIR" >
@@ -250,7 +250,7 @@
         <File
           Id="HieraConf"
           KeyPath="yes"
-          Source="SourceDir\CommonAppDataFolder\Puppetlabs\puppet\etc\hiera.yaml" />
+          Source="SourceDir\CommonAppDataFolder\VoxPupuli\puppet\etc\hiera.yaml" />
         <Condition>NOT PUP_PREEXISTING_CODE_HIERA AND NOT PUP_PREEXISTING_CONF_HIERA</Condition>
       </Component>
       <Component
@@ -263,7 +263,7 @@
         <File
           Id="HieraProductionConf"
           KeyPath="yes"
-          Source="SourceDir\CommonAppDataFolder\Puppetlabs\code\environments\production\hiera.yaml" />
+          Source="SourceDir\CommonAppDataFolder\VoxPupuli\code\environments\production\hiera.yaml" />
         <Condition>NOT PUP_PREEXISTING_CODE_HIERA AND NOT PUP_PREEXISTING_CONF_HIERA</Condition>
       </Component>
       <Component
@@ -339,7 +339,7 @@
         <File
           Id="EnvironmentConf"
           KeyPath="yes"
-          Source="SourceDir\CommonAppDataFolder\PuppetLabs\code\environments\production\environment.conf" />
+          Source="SourceDir\CommonAppDataFolder\VoxPupuli\code\environments\production\environment.conf" />
       </Component>
       <Component
         Id="ManifestsDir"

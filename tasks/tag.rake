@@ -1,5 +1,3 @@
-require 'open3'
-
 namespace :vox do
   desc 'Create tag and push to origin'
   task :tag, [:tag] do |_, args|
