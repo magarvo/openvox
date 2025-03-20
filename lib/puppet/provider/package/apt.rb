@@ -157,13 +157,11 @@ Puppet::Type.type(:package).provide :apt, :parent => :dpkg, :source => :dpkg do
     cmd += install_options if @resource[:install_options]
     cmd << :install
 
-    # rubocop:disable Style/RedundantCondition
     if source
       cmd << source
     else
       cmd << str
     end
-    # rubocop:enable Style/RedundantCondition
 
     unhold if properties[:mark] == :hold
     begin

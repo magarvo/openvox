@@ -110,7 +110,6 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
   # @param disableexcludes [Array<String>] A list of repository excludes to disable for this query
   # @return [Hash<String, Array<Hash<String, String>>>] All packages that were
   #   found with a list of found versions for each package.
-  # rubocop:disable Layout/SingleLineBlockChain
   def self.check_updates(disablerepo, enablerepo, disableexcludes)
     args = [command(:cmd), 'check-update']
     args.concat(disablerepo.map { |repo| ["--disablerepo=#{repo}"] }.flatten)
@@ -130,7 +129,6 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
     end
     updates
   end
-  # rubocop:enable Layout/SingleLineBlockChain
 
   def self.parse_updates(str)
     # Strip off all content that contains Obsoleting, Security: or Update
@@ -229,7 +227,6 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
     end
   end
 
-  # rubocop:disable Layout/SingleLineBlockChain
   def available_versions(package_name, disablerepo, enablerepo, disableexcludes)
     args = [command(:cmd), 'list', package_name, '--showduplicates']
     args.concat(disablerepo.map { |repo| ["--disablerepo=#{repo}"] }.flatten)
@@ -239,11 +236,9 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
     output = execute("#{args.compact.join(' ')} | sed -e '1,/Available Packages/ d' | awk '{print $2}'")
     output.split("\n")
   end
-  # rubocop:enable Layout/SingleLineBlockChain
 
   def install
     wanted = @resource[:name]
-    error_level = self.class.error_level
     update_command = self.class.update_command
     # If not allowing virtual packages, do a query to ensure a real package exists
     unless @resource.allow_virtual?
