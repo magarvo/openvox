@@ -5,6 +5,16 @@ require 'rake'
 require 'rubygems'
 require 'rubygems/package_task'
 
+def run_command(cmd)
+  output, status = Open3.capture2e(cmd)
+  abort "Command failed! Command: #{cmd}, Output: #{output}" unless status.exitstatus.zero?
+  output.chomp
+end
+
+Dir.glob(File.join('tasks/**/*.rake')).each { |file| load file }
+
+### Puppetlabs stuff ###
+
 if Rake.application.top_level_tasks.grep(/^(pl:|package:)/).any?
   begin
     require 'packaging'
