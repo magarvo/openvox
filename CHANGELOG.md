@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 8.14.0
+
 * Added Windows x64 support. This should work on Windows Server 2016+ and Windows 10+.
 * Updated Boost to 1.82.0 for Windows only in order to fix a bug needed for buidling the Windows agent. https://github.com/boostorg/locale/commit/41868c62a0519799696b544518f1efd831ff71c2
 * Fixed issue on Fedora 41 with dnf5. We were using deprecated yum flags -d and -e. Since we don't support anything older than EL7, in which these were already deprecated, they have been removed.
