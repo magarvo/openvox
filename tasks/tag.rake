@@ -24,9 +24,9 @@ namespace :vox do
 
     run_command("git tag -a #{version} -m '#{version}'")
 
-    unless !ENV['NOPUSH'].nil?
-      puts "Pushing #{version} to origin"
-      run_command("git push origin #{version}")
+    if ENV['NOPUSH'].nil?
+      puts "Pushing to origin"
+      run_command("git push origin && git push origin #{version}")
     end
   end
 end
