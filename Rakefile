@@ -1,6 +1,15 @@
-def run_command(cmd)
-  output, status = Open3.capture2e(cmd)
-  abort "Command failed! Command: #{cmd}, Output: #{output}" unless status.exitstatus.zero?
+require 'open3'
+
+def run_command(cmd, silent = false)
+  output = ''
+  Open3.popen2e(cmd) do |_stdin, stdout_stderr, thread|
+    stdout_stderr.each do |line|
+      puts line unless silent
+      output += line
+    end
+    exitcode = thread.value.exitstatus
+    abort "Command failed!" unless exitcode.zero?
+  end
   output.chomp
 end
 

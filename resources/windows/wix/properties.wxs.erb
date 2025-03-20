@@ -26,7 +26,7 @@
       Value="<%= @version.sub(/\.g[0-9a-z]{7}$/, '') %>" />
 
     <!--
-      By default, install puppet agent to run as LocalSystem. Password
+      By default, install OpenVox agent to run as LocalSystem. Password
       is hidden to prevent it from appearing in msiexec log files
     -->
     <Property
@@ -48,7 +48,7 @@
     <!-- This text is placed as a literal string in the GUI -->
     <Property
       Id="WIXUI_EXITDIALOGOPTIONALTEXT"
-      Value="Manage your first resources on this node, explore the Puppet community and get support using the shortcuts in the Documentation folder of your Start Menu." />
+      Value="Manage your first resources on this node, explore the OpenVox community and get support using the shortcuts in the Documentation folder of your Start Menu." />
 
     <Property
       Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
@@ -204,8 +204,8 @@
 
     <!--
       Check if there is a pre-existing Hiera 3 format file in either:
-        1. C:\ProgramData\PuppetLabs\code
-        2. C:\ProgramData\PuppetLabs\puppet\etc
+        1. C:\ProgramData\VoxPupuli\code
+        2. C:\ProgramData\VoxPupuli\puppet\etc
       If either file exists, then we need to block the installation of the new format
       Hiera 5 default files.
       This Programdata directory is fixed, so its not influenced by a change in
@@ -213,12 +213,12 @@
       These properties are used in appdatafiles.wxs.
     -->
     <Property Id="PUP_PREEXISTING_CODE_HIERA">
-      <DirectorySearch Id="CheckCodeDir" Path="C:\ProgramData\PuppetLabs\code" Depth="0" AssignToProperty="yes">
+      <DirectorySearch Id="CheckCodeDir" Path="C:\ProgramData\VoxPupuli\code" Depth="0" AssignToProperty="yes">
         <FileSearch Id="CheckCodeHieraFile" Name="hiera.yaml" />
       </DirectorySearch>
     </Property>
     <Property Id="PUP_PREEXISTING_CONF_HIERA">
-      <DirectorySearch Id="CheckConfDir" Path="C:\ProgramData\PuppetLabs\puppet\etc" Depth="0" AssignToProperty="yes">
+      <DirectorySearch Id="CheckConfDir" Path="C:\ProgramData\VoxPupuli\puppet\etc" Depth="0" AssignToProperty="yes">
         <FileSearch Id="CheckConfHieraFile" Name="hiera.yaml" />
       </DirectorySearch>
     </Property>

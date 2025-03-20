@@ -34,7 +34,7 @@ Function SetPropertyFromIni (keyName, propertyName, textToSearch)
 End Function
 Dim fso, wshShell, iniPath
 Set wshShell = CreateObject("WScript.Shell")
-iniPath = wshShell.ExpandEnvironmentStrings("%ALLUSERSPROFILE%\PuppetLabs\puppet\etc\puppet.conf")
+iniPath = wshShell.ExpandEnvironmentStrings("%ALLUSERSPROFILE%\VoxPupuli\puppet\etc\puppet.conf")
 Set fso = CreateObject("Scripting.FileSystemObject")
 If (fso.FileExists(iniPath)) Then
   Set iniFile = fso.OpenTextFile(iniPath, 1, false)
@@ -393,7 +393,7 @@ Function GetSDDL (Path)
   End If
 
   ' Win32_SecurityDescriptorHelper omits inheritance ID flag, and cacls omits O: and G: info
-  ' cacls output formatted like : C:\ProgramData\PuppetLabs\puppet "D:P(A;OICIID;FA;;;SY)(A;OICIID;FA;;;BA)"
+  ' cacls output formatted like : C:\ProgramData\VoxPupuli\puppet "D:P(A;OICIID;FA;;;SY)(A;OICIID;FA;;;BA)"
   ' sddlString formatted like : O:SYG:SYD:AI(A;OICI;FA;;;SY)(A;OICI;FA;;;BA)
   Dim caclsOutput : caclsOutput = ExecuteCommand(comspec & " /C " & cacls & "  """ & Path & """ /S")
 
@@ -481,10 +481,10 @@ Dim appDataPath : appDataPath = (shellApplication.Namespace(CommonAppData)).Self
 
 ' Due to PUP-6729, now that we can modify the DACL
 ' ensure admins and system have full control
-ResetPermissionsIfNotMatches appDataPath & "\PuppetLabs\puppet\etc", appDataPath & "\PuppetLabs\puppet", SDDL_DIR_INHERITED_ADMIN_ONLY_ADMINS_OWNER, True
-ResetPermissionsIfNotMatches appDataPath & "\PuppetLabs\code\environments", appDataPath & "\PuppetLabs\code", SDDL_DIR_INHERITED_ADMIN_ONLY, False
-ResetPermissionsIfNotMatches appDataPath & "\PuppetLabs\facter\facts.d", appDataPath & "\PuppetLabs\facter", SDDL_DIR_INHERITED_EVERYONE, False
-ResetPermissionsIfNotMatches appDataPath & "\PuppetLabs\pxp-agent\etc", appDataPath & "\PuppetLabs\pxp-agent", SDDL_DIR_INHERITED_ADMIN_ONLY, False
+ResetPermissionsIfNotMatches appDataPath & "\VoxPupuli\puppet\etc", appDataPath & "\VoxPupuli\puppet", SDDL_DIR_INHERITED_ADMIN_ONLY_ADMINS_OWNER, True
+ResetPermissionsIfNotMatches appDataPath & "\VoxPupuli\code\environments", appDataPath & "\VoxPupuli\code", SDDL_DIR_INHERITED_ADMIN_ONLY, False
+ResetPermissionsIfNotMatches appDataPath & "\VoxPupuli\facter\facts.d", appDataPath & "\VoxPupuli\facter", SDDL_DIR_INHERITED_EVERYONE, False
+ResetPermissionsIfNotMatches appDataPath & "\VoxPupuli\pxp-agent\etc", appDataPath & "\VoxPupuli\pxp-agent", SDDL_DIR_INHERITED_ADMIN_ONLY, False
       ]]>
     </CustomAction>
   </Fragment>

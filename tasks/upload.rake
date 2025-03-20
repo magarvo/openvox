@@ -1,5 +1,3 @@
-require 'open3'
-
 namespace :vox do
   desc 'Upload artifacts from the output directory to S3. Requires the AWS CLI to be installed and configured appropriately.'
   task :upload, [:tag, :platform] do |_, args|

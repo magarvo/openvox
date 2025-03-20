@@ -31,9 +31,10 @@ component 'puppet-runtime' do |pkg, settings, platform|
     # Elevate.exe is simply used when one of the run_facter.bat or
     # run_puppet.bat files are called. These set up the required environment
     # for the program, and elevate.exe gives the program the elevated
-    # privileges it needs to run
+    # privileges it needs to run.
+    # Comes from https://github.com/jpassing/elevate
     pkg.add_source "file://resources/files/windows/elevate.exe.config", sum: "a5aecf3f7335fa1250a0f691d754d561"
-    pkg.add_source "#{settings[:buildsources_url]}/windows/elevate/elevate.exe", sum: "bd81807a5c13da32dd2a7157f66fa55d"
+    pkg.add_source "https://artifacts.overlookinfratech.com/components/elevate.exe", sum: "bd81807a5c13da32dd2a7157f66fa55d"
     pkg.install_file 'elevate.exe.config', "#{settings[:bindir]}/elevate.exe.config"
     pkg.install_file 'elevate.exe', "#{settings[:bindir]}/elevate.exe"
 
