@@ -46,7 +46,7 @@ project 'openvox-agent' do |proj|
   # Project level settings our components will care about
   if platform.is_windows?
     proj.setting(:company_name, "Vox Pupuli")
-    proj.setting(:pl_company_name, "Vox Pupuli")
+    proj.setting(:pl_company_name, "PuppetLabs")
     proj.setting(:common_product_id, "PuppetInstaller")
     proj.setting(:puppet_service_name, "puppet")
     proj.setting(:upgrade_code, "2AD3D11C-61B3-4710-B106-B4FDEC5FA358")
