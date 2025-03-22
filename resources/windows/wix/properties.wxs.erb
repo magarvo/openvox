@@ -186,7 +186,7 @@
       <RegistrySearch
         Id="RecallInstallDir"
         Root="HKLM"
-        Key="SOFTWARE\<%= settings[:pl_company_name] %>\<%= settings[:product_id] %>"
+        Key="SOFTWARE\<%= settings[:pl_company_name] %>\<%= settings[:pl_product_id] %>"
         Name="<%= settings[:RememberedInstallDirRegKey] %>"
         Type="raw"
         Win64="<%= settings[:win64] %>" />
@@ -196,7 +196,7 @@
       <RegistrySearch
         Id="RecallInstallDirx86"
         Root="HKLM"
-        Key="SOFTWARE\<%= settings[:pl_company_name] %>\<%= settings[:product_id] %>"
+        Key="SOFTWARE\<%= settings[:pl_company_name] %>\<%= settings[:pl_product_id] %>"
         Name="<%= settings[:RememberedInstallDirRegKey] %>"
         Type="raw"
         Win64="<%= settings[:win64] %>" />
@@ -204,8 +204,8 @@
 
     <!--
       Check if there is a pre-existing Hiera 3 format file in either:
-        1. C:\ProgramData\VoxPupuli\code
-        2. C:\ProgramData\VoxPupuli\puppet\etc
+        1. C:\ProgramData\PuppetLabs\code
+        2. C:\ProgramData\PuppetLabs\puppet\etc
       If either file exists, then we need to block the installation of the new format
       Hiera 5 default files.
       This Programdata directory is fixed, so its not influenced by a change in
@@ -213,12 +213,12 @@
       These properties are used in appdatafiles.wxs.
     -->
     <Property Id="PUP_PREEXISTING_CODE_HIERA">
-      <DirectorySearch Id="CheckCodeDir" Path="C:\ProgramData\VoxPupuli\code" Depth="0" AssignToProperty="yes">
+      <DirectorySearch Id="CheckCodeDir" Path="C:\ProgramData\PuppetLabs\code" Depth="0" AssignToProperty="yes">
         <FileSearch Id="CheckCodeHieraFile" Name="hiera.yaml" />
       </DirectorySearch>
     </Property>
     <Property Id="PUP_PREEXISTING_CONF_HIERA">
-      <DirectorySearch Id="CheckConfDir" Path="C:\ProgramData\VoxPupuli\puppet\etc" Depth="0" AssignToProperty="yes">
+      <DirectorySearch Id="CheckConfDir" Path="C:\ProgramData\PuppetLabs\puppet\etc" Depth="0" AssignToProperty="yes">
         <FileSearch Id="CheckConfHieraFile" Name="hiera.yaml" />
       </DirectorySearch>
     </Property>
