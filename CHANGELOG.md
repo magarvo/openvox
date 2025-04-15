@@ -2,6 +2,8 @@
 
 ## 8.15.0
 
+## 8.15.0
+
 * Added support for Fedora 42 x86_64 and aarch64.
 
 ## 8.14.0
