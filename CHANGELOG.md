@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 8.15.0
+
+* Added support for Fedora 42 x86_64 and aarch64.
+
 ## 8.14.0
 
 * Added Windows x64 support. This should work on Windows Server 2016+ and Windows 10+.
