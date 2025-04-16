@@ -74,7 +74,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
 
       it "should call #{provider_name} install for :installed" do
         allow(resource).to receive(:should).with(:ensure).and_return(:installed)
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, 'mypackage'])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, 'mypackage'])
         provider.install
       end
 
@@ -86,7 +86,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
 
           it "should catch #{provider_name} install failures when status code is wrong" do
             allow(resource).to receive(:should).with(:ensure).and_return(:installed)
-            expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-e', error_level, '-y', :install, name]).and_return(Puppet::Util::Execution::ProcessOutput.new("No package #{name} available.", 0))
+            expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, name]).and_return(Puppet::Util::Execution::ProcessOutput.new("No package #{name} available.", 0))
             expect {
               provider.install
             }.to raise_error(Puppet::Error, "Could not find package #{name}")
@@ -102,14 +102,14 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
       it 'should be able to set version' do
         version = '1.2'
         resource[:ensure] = version
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, "#{name}-#{version}"])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, "#{name}-#{version}"])
         allow(provider).to receive(:query).and_return(:ensure => version)
         provider.install
       end
       it 'should handle partial versions specified' do
         version = '1.3.4'
         resource[:ensure] = version
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, 'mypackage-1.3.4'])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, 'mypackage-1.3.4'])
         allow(provider).to receive(:query).and_return(:ensure => '1.3.4-1.el6')
         provider.install
       end
@@ -118,7 +118,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
         current_version = '1.2'
         version = '1.0'
         resource[:ensure] = '1.0'
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :downgrade, "#{name}-#{version}"])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :downgrade, "#{name}-#{version}"])
         allow(provider).to receive(:query).and_return({:ensure => current_version}, {:ensure => version})
         provider.install
       end
@@ -127,7 +127,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
         current_version = '1.0'
         version = '1.2'
         resource[:ensure] = '1.2'
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', upgrade_command, "#{name}-#{version}"])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', upgrade_command, "#{name}-#{version}"])
         allow(provider).to receive(:query).and_return({:ensure => current_version}, {:ensure => version})
         provider.install
       end
@@ -136,7 +136,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
         current_version = ''
         version = '1.2'
         resource[:ensure] = :latest
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, name])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, name])
         allow(provider).to receive(:query).and_return({:ensure => current_version}, {:ensure => version})
         provider.install
       end
@@ -145,7 +145,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
         current_version = '1.0'
         version = '1.2'
         resource[:ensure] = :latest
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', upgrade_command, name])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', upgrade_command, name])
         allow(provider).to receive(:query).and_return({:ensure => current_version}, {:ensure => version})
         provider.install
       end
@@ -153,22 +153,22 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
       it 'should accept install options' do
         resource[:ensure] = :installed
         resource[:install_options] = ['-t', {'-x' => 'expackage'}]
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', ['-t', '-x=expackage'], :install, name])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', ['-t', '-x=expackage'], :install, name])
         provider.install
       end
 
       it 'allow virtual packages' do
         resource[:ensure] = :installed
         resource[:allow_virtual] = true
-        expect(Puppet::Util::Execution).not_to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :list, name])
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, name])
+        expect(Puppet::Util::Execution).not_to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :list, name])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, name])
         provider.install
       end
 
       it 'moves architecture to end of version' do
         version = '1.2.3'
         arch_resource[:ensure] = version
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, "#{name}-#{version}.#{arch}"])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, "#{name}-#{version}.#{arch}"])
         allow(arch_provider).to receive(:query).and_return(:ensure => version)
         arch_provider.install
       end
@@ -180,7 +180,7 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
           :ensure => version,
           :provider =>provider_name
         )
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-d', '0', '-e', error_level, '-y', :install, "#{name}-noarch-#{version}"])
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :install, "#{name}-noarch-#{version}"])
         provider = provider_class.new
         provider.resource = resource
         allow(provider).to receive(:query).and_return(:ensure => version)
