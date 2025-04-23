@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 8.16.0
+
 * Updated curl to 8.13.0
 * Updated dmidecode to 3.6
 * Updated libffi to 3.4.8 to address CVE-2024-56171, CVE-2025-24928, CVE-2025-32414, CVE-2025-32415
