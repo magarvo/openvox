@@ -16,6 +16,7 @@
 * Updated sys-filesystem to 1.4.5
 * Updated boost to 1.82.0
 * Removed yaml-cpp, as this was only used for the C++ version of Facter which is no longer used.
+* For the Windows agent, the path includes the space in "C:\Program Files\Puppet Labs" once again to maintain compatibility with certain modules.
 
 ## 8.15.0
 
