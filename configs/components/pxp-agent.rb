@@ -22,10 +22,17 @@ component "pxp-agent" do |pkg, settings, platform|
     ]
   elsif platform.is_macos?
     # We can't untar into '/' because of SIP on macOS; Just copy the contents
-    # of these directories instead:
+    # of these directories instead. Also, /private got a lot more restrictive
+    # in 15.4, and most of the pieces of the -a flag end up being not permitted.
+    # Because basically nothing ends up there (it's an empty /private/etc/puppetlabs),
+    # just do -k. The var dir is also usually not present, so just skip it if it
+    # doesn't exist. Still fail if opt doesn't, because if not, something is
+    # very wrong.
     install_command = [
       "tar -xzf #{tarball_name}",
-      "for d in opt var private; do rsync -ka --ignore-existing \"$${d}/\" \"/$${d}/\"; done"
+      'd="opt";rsync -ka --ignore-existing "$${d}/" "/$${d}/"',
+      'd="var";if [ -d $${d} ];then rsync -ka --ignore-existing "$${d}/" "/$${d}/";fi',
+      'd="private";if [ -d $${d} ];then rsync -k --ignore-existing "$${d}/" "/$${d}/";fi',
     ]
   elsif platform.is_aix? || platform.is_solaris? || platform.name =~ /sles-11-x86_64/
     install_command = ["gunzip -c #{tarball_name} | #{platform.tar} -C / -xf -"]
