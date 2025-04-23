@@ -1,6 +1,21 @@
 ## Unreleased
 
-## 8.15.0
+* Updated curl to 8.13.0
+* Updated dmidecode to 3.6
+* Updated libffi to 3.4.8 to address CVE-2024-56171, CVE-2025-24928, CVE-2025-32414, CVE-2025-32415
+* Updated libxslt to 1.1.43 to address CVE-2024-55549, CVE-2025-24855
+* Updated OpenSSL to 3.0.16 to address CVE-2024-13176, CVE-2024-9143
+* Updated Ruby to 3.2.8 to address CVE-2025-27219, CVE-2025-27220, CVE-2025-27221
+* Updated eruby to 1.13.1
+* Updated ffi to 1.17.2
+* Updated hiera-eyaml to 4.2.0
+* Updated mini_portile2 to 2.8.8
+* Updated nokogiri to 1.18.7 to address several CVEs that were present in the vendored versions of libxml2 and libxslt. This is component is only present in the MacOS client. CVE-2023-29469, CVE-2023-28484, CVE-2024-25062, CVE-2024-25062, CVE-2024-34459, CVE-2024-40896, CVE-2025-24928, CVE-2025-24855
+* Updated optimist to 3.2.1
+* Updated prime to 0.1.3
+* Updated sys-filesystem to 1.4.5
+* Updated boost to 1.82.0
+* Removed yaml-cpp, as this was only used for the C++ version of Facter which is no longer used.
 
 ## 8.15.0
 
