@@ -4,7 +4,8 @@
 
 * Updated curl to 8.13.0
 * Updated dmidecode to 3.6
-* Updated libffi to 3.4.8 to address CVE-2024-56171, CVE-2025-24928, CVE-2025-32414, CVE-2025-32415
+* Updated libffi to 3.4.8
+* Update libxml2 to 2.13.8 to address CVE-2024-56171, CVE-2025-24928, CVE-2025-32414, CVE-2025-32415
 * Updated libxslt to 1.1.43 to address CVE-2024-55549, CVE-2025-24855
 * Updated OpenSSL to 3.0.16 to address CVE-2024-13176, CVE-2024-9143
 * Updated Ruby to 3.2.8 to address CVE-2025-27219, CVE-2025-27220, CVE-2025-27221
