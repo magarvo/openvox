@@ -1,4 +1,10 @@
-name: Acceptance Tests
+name: Beaker Acceptance Tests
+run-name: |-
+  Beaker acceptance tests for ${{ inputs.pre-release-build && 'pre-release' || 'release' }} package
+  ${{ (inputs.pre-release-build && inputs.version) ||
+      format(' collection: "{0}", version: "{1}" ',
+             inputs.collection,
+             ((inputs.version == '') && 'latest') || inputs.version) }}
 
 on:
   workflow_dispatch:
