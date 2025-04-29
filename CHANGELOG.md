@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 8.17.0
+
 * Fixed an issue where we attempted to close the file descriptor of the directory we are iterating. [openvox/puppet#9552](https://github.com/puppetlabs/puppet/pull/9552)
 * Added Debian 13 aarch64 and x86_64. This is built using a pre-release Trixie container image. Consider this agent pre-release until Debian 13 is officially released and we build using the official image. However, you should have no problems using this agent with Trixie.
 * Added amazon-2-x86_64. You may continue to use the el-7-x86_64 agent for this platform, but this one is built specifically with an amazonlinux:2 container image.
