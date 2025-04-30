@@ -22,7 +22,8 @@ namespace :vox do
     # Ensure the AWS CLI isn't going to fail with the given parameters
     run_command("#{s3} ls s3://#{bucket}/")
 
-    glob = "#{__dir__}/../output/**/*#{munged_tag}*"
+    prepend = File.directory?('/cygdrive/') ? 'C:/cygwin64/' : ''
+    glob = "#{prepend}#{__dir__}/../output/**/*#{munged_tag}*"
     if os
       # "arch" is not used here because we are currently horrifyingly
       # inconsistent with the platform -> package name
