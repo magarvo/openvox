@@ -7,6 +7,7 @@ The Puppet Agent
  * License
  * Code Owners
  * Running Tests
+ * Github Actions
 
 Overview
 ---
@@ -144,3 +145,13 @@ See [CODEOWNERS](CODEOWNERS)
 Running Tests
 ---
 See [Acceptance README](acceptance/README.md)
+
+Github Actions
+---
+
+PR validation runs a pair of GHA jobs that check commit messages and
+run Rubocop (.github/workflows/checks.yml) via the Rakefile.
+
+There is also a manual acceptance GHA pipeline that runs the Beaker
+acceptance suite:
+See [GHA_ACCEPTANCE](acceptance/GHA_ACCEPTANCE.md)
