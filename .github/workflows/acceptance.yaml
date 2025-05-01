@@ -58,6 +58,7 @@ jobs:
           - [debian, '10']
           - [debian, '11']
           - [debian, '12']
+          - [debian, '13', 'amd64', 'daily-latest']
     steps:
       - uses: actions/checkout@v4
         with:
@@ -67,7 +68,8 @@ jobs:
         with:
           os: ${{ matrix.os[0] }}
           os-version: ${{ matrix.os[1] }}
-          os-arch: x86_64
+          os-arch: ${{ matrix.os[2] || 'x86_64' }}
+          image_version: ${{ matrix.os[3] }}
           host-root-access: true
           ruby-version: ${{ env.RUBY_VERSION }}
           install-openvox: true
