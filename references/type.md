@@ -2063,15 +2063,15 @@ _(**Namevar:** If omitted, this attribute's value defaults to the resource's tit
 
 The targeted command to use when managing a package:
 
-  package { 'mysql':
-    provider => gem,
-  }
+    package { 'mysql':
+      provider => gem,
+    }
 
-  package { 'mysql-opt':
-    name     => 'mysql',
-    provider => gem,
-    command  => '/opt/ruby/bin/gem',
-  }
+    package { 'mysql-opt':
+      name     => 'mysql',
+      provider => gem,
+      command  => '/opt/ruby/bin/gem',
+    }
 
 Each provider defines a package management command and uses the first
 instance of the command found in the PATH.
@@ -2795,7 +2795,7 @@ has not actually been tested.
 Support via `tdnf`.
 
 This provider supports the `install_options` attribute, which allows command-line flags to be passed to tdnf.
-These options should be spcified as a string (e.g. '--flag'), a hash (e.g. {'--flag' => 'value'}), or an
+These options should be specified as a string (e.g. `'--flag'`), a hash (e.g. `{'--flag' => 'value'}`), or an
 array where each element is either a string or a hash.
 
 * Required binaries: `rpm`, `tdnf`.
