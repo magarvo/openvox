@@ -51,14 +51,18 @@ jobs:
     strategy:
       matrix:
         os:
-          - [ubuntu, '18.04']
-          - [ubuntu, '20.04']
-          - [ubuntu, '22.04']
-          - [ubuntu, '24.04']
+          - [almalinux, '8']
+          - [almalinux, '9']
           - [debian, '10']
           - [debian, '11']
           - [debian, '12']
           - [debian, '13', 'amd64', 'daily-latest']
+          - [rocky, '8']
+          - [rocky, '9']
+          - [ubuntu, '18.04']
+          - [ubuntu, '20.04']
+          - [ubuntu, '22.04']
+          - [ubuntu, '24.04']
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,13 +81,19 @@ jobs:
           openvox-collection: ${{ github.event.inputs.collection }}
           openvox-released: ${{ github.event.inputs.pre-release-build == 'false' }}
           openvox-artifacts-url: ${{ github.event.inputs.artifacts-url }}
+          # Note: the cpu_mode is set to host-model for the sake of
+          # el-9 which expects at least x86_64-2 arch. This depends on
+          # the runner's architecture being sufficient, and there is
+          # probably a better way to get this set on the libvirt
+          # domain instead.
           vms: |-
             [
               {
                 "role": "agent",
                 "count": 1,
                 "cpus": 2,
-                "mem_mb": 4096
+                "mem_mb": 4096,
+                "cpu_mode": "host-model"
               }
             ]
       - name: Install Ruby and Run Bundler
