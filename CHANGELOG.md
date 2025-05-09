@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Further fix for the file descriptor bug from last release.
+
 ## 8.17.0
 
 * Fixed an issue where we attempted to close the file descriptor of the directory we are iterating. [openvox/puppet#9552](https://github.com/puppetlabs/puppet/pull/9552)
