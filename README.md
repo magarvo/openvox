@@ -90,7 +90,7 @@ If you wish to build puppet-agent yourself:
 5. Now use vanagon to build the puppet-agent. Run the following:
 
    ```sh
-   bundle exec build <project-name> <platform> <vm-hostname>
+   bundle exec vanagon build <project-name> <platform> <vm-hostname>
    ```
 
    Where:
