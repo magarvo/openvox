@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Further fix for the file descriptor bug from last release.
+* Removed unused ContentsDescription class that has been unused for a long time in favor of metadata.json.
 
 ## 8.17.0
 
