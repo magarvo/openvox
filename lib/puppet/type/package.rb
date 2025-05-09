@@ -291,15 +291,15 @@ module Puppet
       desc <<-EOT
         The targeted command to use when managing a package:
 
-          package { 'mysql':
-            provider => gem,
-          }
+            package { 'mysql':
+              provider => gem,
+            }
 
-          package { 'mysql-opt':
-            name     => 'mysql',
-            provider => gem,
-            command  => '/opt/ruby/bin/gem',
-          }
+            package { 'mysql-opt':
+              name     => 'mysql',
+              provider => gem,
+              command  => '/opt/ruby/bin/gem',
+            }
 
         Each provider defines a package management command and uses the first
         instance of the command found in the PATH.
