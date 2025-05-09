@@ -478,13 +478,15 @@ module Util
       $stderr = STDERR
 
       begin
-        Dir.foreach('/proc/self/fd') do |f|
-          if %{^\d+$}.match?(f) && f.to_i >= 3
-            begin
-              IO.new(f.to_i).close
-            rescue
-              nil
-            end
+        d = Dir.new('/proc/self/fd')
+        ignore_fds = ['.', '..', d.fileno.to_s]
+        d.each_child do |f|
+          next if ignore_fds.include?(f) || f.to_i < 3
+
+          begin
+            IO.new(f.to_i).close
+          rescue
+            nil
           end
         end
       rescue Errno::ENOENT, Errno::ENOTDIR # /proc/self/fd not found, /proc/self not a dir

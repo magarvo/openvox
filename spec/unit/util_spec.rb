@@ -616,18 +616,20 @@ describe Puppet::Util do
       fds.each do |fd|
         if fd == '.' || fd == '..'
           next
-        elsif ['0', '1', '2'].include? fd
+        elsif ['0', '1', '2', '5'].include? fd
           expect(IO).not_to receive(:new).with(fd.to_i)
         else
           expect(IO).to receive(:new).with(fd.to_i).and_return(double('io', close: nil))
         end
       end
 
-      dir_expectation = receive(:foreach).with('/proc/self/fd')
+      dir = double(Dir, fileno: '5')
+      dir_expectation = receive(:each_child)
       fds.each do |fd|
         dir_expectation = dir_expectation.and_yield(fd)
       end
-      allow(Dir).to dir_expectation
+      allow(dir).to dir_expectation
+      allow(Dir).to receive(:new).with('/proc/self/fd').and_return(dir)
       Puppet::Util.safe_posix_fork
     end
 
@@ -636,7 +638,7 @@ describe Puppet::Util do
       # letting it actually close fds, which seems risky
       (0..2).each {|n| expect(IO).not_to receive(:new).with(n)}
       (3..256).each {|n| expect(IO).to receive(:new).with(n).and_return(double('io', close: nil))  }
-      allow(Dir).to receive(:foreach).with('/proc/self/fd').and_raise(Errno::ENOENT)
+      allow(Dir).to receive(:new).with('/proc/self/fd').and_raise(Errno::ENOENT)
 
       Puppet::Util.safe_posix_fork
     end
@@ -646,7 +648,7 @@ describe Puppet::Util do
       # letting it actually close fds, which seems risky
       (0..2).each {|n| expect(IO).not_to receive(:new).with(n)}
       (3..256).each {|n| expect(IO).to receive(:new).with(n).and_return(double('io', close: nil))  }
-      allow(Dir).to receive(:foreach).with('/proc/self/fd').and_raise(Errno::ENOTDIR)
+      allow(Dir).to receive(:new).with('/proc/self/fd').and_raise(Errno::ENOTDIR)
 
       Puppet::Util.safe_posix_fork
     end
