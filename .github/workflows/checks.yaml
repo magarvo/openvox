@@ -13,9 +13,6 @@ jobs:
   rake_checks:
     name: Rake Checks
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        check: [ 'rubocop', 'commits' ]
     steps:
       - name: Checkout current PR
         uses: actions/checkout@v4
@@ -29,4 +26,4 @@ jobs:
         run: |
           gem update --system --silent --no-document
           bundle install --jobs 4 --retry 3
-      - run: bundle exec rake ${{ matrix.check }} --trace
+      - run: bundle exec rake rubocop --trace

@@ -21,15 +21,6 @@ project 'openvox-agent' do |proj|
   metadata_uri = File.join(runtime_details['location'], "#{proj.settings[:puppet_runtime_basename]}.json")
   proj.inherit_yaml_settings(settings_uri, sha1sum_uri, metadata_uri: metadata_uri)
 
-  if platform.is_macos?
-    proj.extra_file_to_sign File.join(proj.bindir, 'puppet')
-    proj.extra_file_to_sign File.join(proj.bindir, 'pxp-agent')
-    proj.extra_file_to_sign File.join(proj.bindir, 'wrapper.sh')
-    proj.signing_hostname 'osx-signer-prod-3.delivery.puppetlabs.net'
-    proj.signing_username 'jenkins'
-    proj.signing_command 'security -q unlock-keychain -p \$$OSX_SIGNING_KEYCHAIN_PW \$$OSX_SIGNING_KEYCHAIN; codesign --timestamp --keychain \$$OSX_SIGNING_KEYCHAIN -vfs \"\$$OSX_CODESIGNING_CERT\"'
-  end
-
   if platform.is_fedora? || platform.name =~ /el-10/
     proj.package_override("# Disable check-rpaths since /opt/* is not a valid path\n%global __brp_check_rpaths %{nil}")
     proj.package_override("# Disable the removal of la files, they are still required\n%global __brp_remove_la_files %{nil}")
@@ -88,7 +79,11 @@ project 'openvox-agent' do |proj|
   proj.setting(:service_conf, File.join(proj.install_root, 'service_conf'))
 
   proj.description "The OpenVox Agent package contains all of the elements needed to run the agent, including ruby and facter."
-  proj.version_from_git
+  if ENV['OPENVOX_AGENT_VERSION']
+    proj.version ENV['OPENVOX_AGENT_VERSION']
+  else
+    proj.version_from_git
+  end
   proj.write_version_file File.join(proj.prefix, 'VERSION')
   proj.license "See components"
   proj.vendor "Vox Pupuli <openvox@voxpupuli.org>"
