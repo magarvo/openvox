@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 8.18.1
+
 * Fix for the PR removing the ContentsDescription class.
 
 ## 8.18.0 (not released)
