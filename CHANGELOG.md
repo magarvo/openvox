@@ -2,6 +2,8 @@
 
 * Further fix for the file descriptor bug from last release.
 * Removed unused ContentsDescription class that has been unused for a long time in favor of metadata.json.
+* Added support for Fedora 43 x86_64 and aarch64. Note that Fedora 43 has not yet been released and this agent is being built with the state of the OS at build time, so treat this agent accordingly.
+* The openvox-agent package now "provides" puppet-agent, so any projects that require a puppet-agent package can now use openvox-agent more seamlessly. It also now bounds the version for "replaces" on puppet-agent so that package managers don't complain.
 
 ## 8.17.0
 
