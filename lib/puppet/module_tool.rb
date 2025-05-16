@@ -188,7 +188,6 @@ end
 require_relative 'module_tool/errors'
 require_relative 'module_tool/applications'
 require_relative 'module_tool/checksums'
-require_relative 'module_tool/contents_description'
 require_relative 'module_tool/dependency'
 require_relative 'module_tool/metadata'
 require_relative '../puppet/forge/cache'
