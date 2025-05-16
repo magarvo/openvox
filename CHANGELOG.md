@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 8.18.0
+
 * Further fix for the file descriptor bug from last release.
 * Removed unused ContentsDescription class that has been unused for a long time in favor of metadata.json.
 * Added support for Fedora 43 x86_64 and aarch64. Note that Fedora 43 has not yet been released and this agent is being built with the state of the OS at build time, so treat this agent accordingly.
