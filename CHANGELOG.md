@@ -1,6 +1,8 @@
 ## Unreleased
 
-## 8.18.0
+* Fix for the PR removing the ContentsDescription class.
+
+## 8.18.0 (not released)
 
 * Further fix for the file descriptor bug from last release.
 * Removed unused ContentsDescription class that has been unused for a long time in favor of metadata.json.
