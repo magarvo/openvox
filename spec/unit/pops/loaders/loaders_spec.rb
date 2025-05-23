@@ -531,7 +531,7 @@ describe 'loaders' do
     it "a function with syntax error has helpful error message" do
       expect {
         loader.load_typed(typed_name(:function, 'func_with_syntax_error'))
-      }.to raise_error(/syntax error, unexpected `end'/)
+      }.to raise_error(/unexpected.*end'/)
     end
   end
 

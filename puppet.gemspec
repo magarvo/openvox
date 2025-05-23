@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency('ostruct', '~> 0.6.0')
   spec.add_runtime_dependency('benchmark', '~> 0.3.0')
 
+
   platform = spec.platform.to_s
   if platform == 'universal-darwin'
     spec.add_runtime_dependency('CFPropertyList', ['>= 3.0.6', '< 4'])
