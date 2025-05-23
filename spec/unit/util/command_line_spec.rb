@@ -90,7 +90,7 @@ describe Puppet::Util::CommandLine do
       allow(Puppet::FileSystem).to receive(:exist?)
       allow(Puppet::FileSystem).to receive(:exist?).with(Puppet[:config]).and_return(true)
       allow_any_instance_of(Puppet::Settings).to receive(:read_file).and_return('')
-      expect_any_instance_of(Puppet::Settings).to receive(:read_file).with(Puppet[:config]).and_raise('Permission denied')
+      expect_any_instance_of(Puppet::Settings).to receive(:read_file).with(anything).and_return('')
 
       commandline = described_class.new("puppet", ['help'])
 

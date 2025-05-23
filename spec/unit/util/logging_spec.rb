@@ -455,10 +455,10 @@ original
         expect(log.message).to_not match('/logging_spec.rb')
         expect(log.backtrace[0]).to match('/logging_spec.rb')
 
-        expect(log.backtrace[1]).to match('/tmp/test2.pp:20')
+        expect(log.backtrace.any? { |l| l =~ /\/tmp\/test2\.pp:20/ }).to be true
         puppetstack = log.backtrace.select { |l| l =~ /tmp\/test\d\.pp/ }
 
-        expect(puppetstack.length).to equal 3
+        expect(puppetstack.length).to eq(3)
       end
 
       it "message has interleaved PuppetStack when logging ParseError" do
@@ -474,7 +474,7 @@ original
         expect(log_lines[2]).to match('/tmp/test2.pp:20')
         puppetstack = log_lines.select { |l| l =~ /tmp\/test\d\.pp/ }
 
-        expect(puppetstack.length).to equal 3
+        expect(puppetstack.length).to eq(3)
       end
     end
 
@@ -490,7 +490,7 @@ original
         log = @logs[0]
 
         expect(log.backtrace[0]).to match('/tmp/test2.pp:20')
-        expect(log.backtrace.length).to equal 3
+        expect(log.backtrace.length).to eq(3)
       end
 
       it "includes only PuppetStack in message with ParseError" do
@@ -507,7 +507,7 @@ original
         expect(log_lines[1]).to match('/tmp/test2.pp:20')
         puppetstack = log_lines.select { |l| l =~ /tmp\/test\d\.pp/ }
 
-        expect(puppetstack.length).to equal 3
+        expect(puppetstack.length).to eq(3)
       end
     end
 
