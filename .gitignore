@@ -34,3 +34,4 @@ coverage/
 spec_order.txt
 /vendor
 /.vendor
+/*.gem
