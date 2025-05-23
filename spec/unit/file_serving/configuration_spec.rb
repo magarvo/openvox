@@ -16,7 +16,8 @@ describe Puppet::FileServing::Configuration do
   end
 
   it "should make :new a private method" do
-    expect { Puppet::FileServing::Configuration.new }.to raise_error(NoMethodError, /private method 'new' called for class Puppet::FileServing::Configuration/)
+    # Ruby 3.3 includes "class" in the error, 3.2 does not.
+    expect { Puppet::FileServing::Configuration.new }.to raise_error(NoMethodError, /private method `new' called for( class)? Puppet::FileServing::Configuration/)
   end
 
   it "should return the same configuration each time 'configuration' is called" do
