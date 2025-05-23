@@ -91,7 +91,7 @@ describe Puppet::Application::Facts do
 
     {
       "type_hash" => [{'a' => 2}, "{\n  \"a\": 2\n}"],
-      "type_array" => [[], "[\n\n]"],
+      "type_array" => [[], "[]"],
       "type_string" => ["str", "str"],
       "type_int" => [1, "1"],
       "type_float" => [1.0, "1.0"],

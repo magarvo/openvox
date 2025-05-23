@@ -936,12 +936,12 @@ describe Puppet::Util do
     end
 
     it "should include function names" do
-      expect(Puppet::Util.pretty_backtrace).to match(/:in `\w+'/)
+      expect(Puppet::Util.pretty_backtrace).to match(/:in '.*'/)
     end
 
     it "should work with Windows paths" do
-      expect(Puppet::Util.pretty_backtrace(["C:/work/puppet/c.rb:12:in `foo'\n"])).
-        to eq("C:/work/puppet/c.rb:12:in `foo'")
+      expect(Puppet::Util.pretty_backtrace(["C:/work/puppet/c.rb:12:in 'foo'\n"])).
+        to eq("C:/work/puppet/c.rb:12:in 'foo'")
     end
   end
 

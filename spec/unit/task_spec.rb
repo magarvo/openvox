@@ -233,7 +233,7 @@ describe Puppet::Module::Task do
 
       expect {
         tasks[0].metadata
-      }.to raise_error(Puppet::Module::Task::InvalidMetadata, /whoops/)
+      }.to raise_error(Puppet::Module::Task::InvalidMetadata, /expected ':' after object key/)
     end
 
     it 'returns empty hash for metadata when json metadata file is empty' do
