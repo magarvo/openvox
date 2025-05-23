@@ -189,8 +189,8 @@ shared_examples "RHEL package provider" do |provider_class, provider_name|
     end
 
     describe 'when uninstalling' do
-      it 'should use erase to purge' do
-        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :erase, name])
+      it 'should use remove to purge' do
+        expect(Puppet::Util::Execution).to receive(:execute).with(["/usr/bin/#{provider_name}", '-y', :remove, name])
         provider.purge
       end
     end
