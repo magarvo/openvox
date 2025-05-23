@@ -345,7 +345,7 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
   end
 
   def purge
-    execute([command(:cmd), "-y", :erase, @resource[:name]])
+    execute([command(:cmd), "-y", :remove, @resource[:name]])
   end
 
   private
