@@ -7,6 +7,7 @@ plugins:
   - rubocop-rake
   - rubocop-rspec
 
+# without excluding the vendor dirs below, rubocop will load all rubocop config files from installed gems ¯\_(ツ)_/¯
 AllCops:
   TargetRubyVersion: 3.1
   Include:
@@ -21,6 +22,8 @@ AllCops:
     - 'lib/puppet/vendor/**/*'
     - 'lib/puppet/pops/model/ast.rb'
     - 'lib/puppet/pops/parser/eparser.rb'
+    - 'vendor/**/*'
+    - '.vendor/**/*'
 
 # The formatting of defaults is unusual, so let's skip layout cops.
 Layout:
