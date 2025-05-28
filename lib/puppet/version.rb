@@ -9,6 +9,7 @@
 
 module Puppet
   PUPPETVERSION = '8.18.1'
+  IMPLEMENTATION = 'openvox'
 
   ##
   # version is a public API method intended to always provide a fast and
@@ -74,6 +75,10 @@ module Puppet
 
   def self.version=(version)
     @puppet_version = version
+  end
+
+  def self.implementation
+    IMPLEMENTATION
   end
 
   ##
