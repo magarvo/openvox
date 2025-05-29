@@ -8,7 +8,11 @@ AllCops:
     - 'resources/**/*.rb'
     - 'ext/**/*'
     - 'vendor/**/*'
+    - '.vendor/**/*'
     - 'bundle/**/*'
+
+plugins:
+  - rubocop-rake
 
 Layout/ArgumentAlignment:
   Enabled: false

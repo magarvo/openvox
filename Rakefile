@@ -39,12 +39,12 @@ load './ext/release-lead.rake'
 
 Pkg::Util::RakeUtils.load_packaging_tasks
 
-desc 'run static analysis with rubocop'
-task(:rubocop) do
-  require 'rubocop'
-  cli = RuboCop::CLI.new
-  exit_code = cli.run(%w(--display-cop-names --format simple))
-  raise "RuboCop detected offenses" if exit_code != 0
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  # These make the rubocop experience maybe slightly less terrible
+  task.options = ['--display-cop-names', '--display-style-guide', '--extra-details']
+  # Use Rubocop's Github Actions formatter if possible
+  task.formatters << 'github' if ENV['GITHUB_ACTIONS'] == 'true'
 end
 
 desc "verify that commit messages match CONTRIBUTING.md requirements"

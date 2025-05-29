@@ -15,8 +15,11 @@ jobs:
     name: Rake Checks
     runs-on: ubuntu-24.04
     steps:
+      # needs fetch-depth because the packaging dem reads old git tags
       - name: Checkout current PR
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install Ruby version 3.3
         uses: ruby/setup-ruby@v1
         with:
@@ -24,7 +27,7 @@ jobs:
           bundler-cache: true
       - name: Validate code
         run: |
-          bundle exec rake rubocop --trace
+          bundle exec rake rubocop
           bundle exec rake -T | grep vox:build
           bundle exec rake -T | grep vox:promote
           bundle exec rake -T | grep vox:tag
