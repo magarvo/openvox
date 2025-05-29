@@ -13,7 +13,7 @@ permissions:
 jobs:
   rake_checks:
     name: Rake Checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout current PR
         uses: actions/checkout@v4
@@ -23,10 +23,10 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
       - name: Validate code
-      - run: |
-        bundle exec rake rubocop --trace
-        bundle exec rake -T | grep vox:build
-        bundle exec rake -T | grep vox:promote
-        bundle exec rake -T | grep vox:tag
-        bundle exec rake -T | grep vox:upload
-        bundle exec rake config:print
+        run: |
+          bundle exec rake rubocop --trace
+          bundle exec rake -T | grep vox:build
+          bundle exec rake -T | grep vox:promote
+          bundle exec rake -T | grep vox:tag
+          bundle exec rake -T | grep vox:upload
+          bundle exec rake config:print
