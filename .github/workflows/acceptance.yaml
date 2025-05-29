@@ -1,3 +1,4 @@
+---
 name: Beaker Acceptance Tests
 run-name: |-
   Beaker acceptance tests for ${{ inputs.pre-release-build && 'pre-release' || 'release' }} package
@@ -47,7 +48,7 @@ env:
 jobs:
   acceptance:
     name: Acceptance Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         os:

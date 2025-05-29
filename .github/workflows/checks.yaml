@@ -1,3 +1,4 @@
+---
 name: Checks
 
 on:
@@ -16,14 +17,16 @@ jobs:
     steps:
       - name: Checkout current PR
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Install Ruby version 3.3
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
-      - name: Update rubygems and install gems
-        run: |
-          gem update --system --silent --no-document
-          bundle install --jobs 4 --retry 3
-      - run: bundle exec rake rubocop --trace
+          bundler-cache: true
+      - name: Validate code
+      - run: |
+        bundle exec rake rubocop --trace
+        bundle exec rake -T | grep vox:build
+        bundle exec rake -T | grep vox:promote
+        bundle exec rake -T | grep vox:tag
+        bundle exec rake -T | grep vox:upload
+        bundle exec rake config:print
