@@ -1,6 +1,8 @@
+require_relative 'lib/puppet/version'
+
 Gem::Specification.new do |spec|
   spec.name = "openvox"
-  spec.version = "8.18.1"
+  spec.version = Puppet::PUPPETVERSION
   spec.licenses = ['Apache-2.0']
 
   spec.required_rubygems_version = Gem::Requirement.new("> 1.3.1")
