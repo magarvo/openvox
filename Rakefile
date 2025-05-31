@@ -1,5 +1,7 @@
 require 'open3'
 
+OPENVOX_AGENT_VERSION = "8.19.0"
+
 RED = "\033[31m".freeze
 GREEN = "\033[32m".freeze
 RESET = "\033[0m".freeze
@@ -103,4 +105,24 @@ task(:commits) do
     end
   end
   puts "#{GREEN}All commit messages match the guidelines!#{RESET}"
+end
+
+begin
+  require "github_changelog_generator/task"
+
+  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+    config.header = <<~HEADER.chomp
+    # Changelog
+
+    All notable changes to this project will be documented in this file.
+    HEADER
+    config.user = "openvoxproject"
+    config.project = "openvox-agent"
+    config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
+    config.future_release = OPENVOX_AGENT_VERSION
+  end
+rescue LoadError
+  task :changelog do
+    abort("Run `bundle install --with packaging` to install the `github_changelog_generator` gem.")
+  end
 end

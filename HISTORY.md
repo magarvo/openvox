@@ -1,7 +1,3 @@
-## Unreleased
-
-* Use yum/dnf remove instead of erase since erase was deprecated and removed in dnf5.
-
 ## 8.18.1
 
 * Fix for the PR removing the ContentsDescription class.
