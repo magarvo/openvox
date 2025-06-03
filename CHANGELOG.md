@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.19.1](https://github.com/openvoxproject/puppet/tree/8.19.1) (2025-06-03)
+
+[Full Changelog](https://github.com/openvoxproject/puppet/compare/8.19.0...8.19.1)
+
+**Fixed bugs:**
+
+- Fix invalid gemspec in AIO package [\#91](https://github.com/OpenVoxProject/puppet/pull/91) ([smortex](https://github.com/smortex))
+
 ## [8.19.0](https://github.com/openvoxproject/puppet/tree/8.19.0) (2025-05-30)
 
 [Full Changelog](https://github.com/openvoxproject/puppet/compare/8.18.1...8.19.0)
