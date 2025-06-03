@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.19.1](https://github.com/openvoxproject/openvox-agent/tree/8.19.1) (2025-06-03)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.19.0...8.19.1)
+
+**Fixed bugs:**
+
+- Update puppet component to 8.19.1 [\#57](https://github.com/OpenVoxProject/openvox-agent/pull/57) ([smortex](https://github.com/smortex))
+
 ## [8.19.0](https://github.com/openvoxproject/openvox-agent/tree/8.19.0) (2025-05-31)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.18.1...8.19.0)
