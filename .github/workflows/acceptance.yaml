@@ -1,0 +1,39 @@
+---
+name: Beaker Acceptance Tests
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  RUBY_VERSION: '3.3'
+
+jobs:
+  acceptance:
+    defaults:
+      run:
+        working-directory: acceptance
+    name: Acceptance Tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Ruby and Run Bundler
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+      - name: Run Beaker
+        run: |-
+          bundle exec beaker init --hosts hosts.yaml \
+            --preserve-hosts always --keyfile "${SSH_KEY}" \
+            --pre-suite pre-suite/configure_type_defaults.rb \
+            --tests tests
+          # The provision step is still needed here, see notes in the
+          # kvm_automation_tooling/templates/beaker-hosts.yaml.epp
+          # template...
+          bundle exec beaker provision
+          bundle exec beaker exec
