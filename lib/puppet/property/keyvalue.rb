@@ -34,7 +34,7 @@ module Puppet
         hash_to_key_value_s(should_value)
       end
 
-      def is_to_s(current_value) # rubocop:disable Naming/PredicateName
+      def is_to_s(current_value) # rubocop:disable Naming/PredicatePrefix
         hash_to_key_value_s(current_value)
       end
 

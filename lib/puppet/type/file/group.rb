@@ -39,7 +39,7 @@ module Puppet
     end
 
     # We want to print names, not numbers
-    def is_to_s(currentvalue) # rubocop:disable Naming/PredicateName
+    def is_to_s(currentvalue) # rubocop:disable Naming/PredicatePrefix
       super(provider.gid2name(currentvalue) || currentvalue)
     end
 

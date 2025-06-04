@@ -161,7 +161,7 @@ Naming/MethodName:
 Naming/MethodParameterName:
   Enabled: false
 
-Naming/PredicateName:
+Naming/PredicatePrefix:
   ForbiddenPrefixes: []
 
 Naming/RescuedExceptionsVariableName:

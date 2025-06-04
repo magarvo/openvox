@@ -58,7 +58,7 @@ Puppet.features.add(:manages_symlinks) do
       require 'ffi'
       extend FFI::Library
 
-      def self.is_implemented # rubocop:disable Naming/PredicateName
+      def self.is_implemented # rubocop:disable Naming/PredicatePrefix
         ffi_lib :kernel32
         attach_function :CreateSymbolicLinkW, [:lpwstr, :lpwstr, :dword], :boolean
 
