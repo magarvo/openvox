@@ -455,7 +455,7 @@ original
         expect(log.message).to_not match('/logging_spec.rb')
         expect(log.backtrace[0]).to match('/logging_spec.rb')
 
-        expect(log.backtrace.any? { |l| l =~ /\/tmp\/test2\.pp:20/ }).to be true
+        expect(log.backtrace).to include(/\/tmp\/test2\.pp:20/)
         puppetstack = log.backtrace.select { |l| l =~ /tmp\/test\d\.pp/ }
 
         expect(puppetstack.length).to eq(3)
