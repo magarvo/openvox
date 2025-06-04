@@ -26,6 +26,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
+      - name: Output Ruby environment information
+        run: bundle env
       - name: Run Beaker
         run: |-
           bundle exec beaker init --hosts hosts.yaml \
