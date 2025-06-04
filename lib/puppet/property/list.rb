@@ -8,7 +8,7 @@ module Puppet
     # For an ordered list see {Puppet::Property::OrderedList}.
     #
     class List < Property
-      def is_to_s(currentvalue) # rubocop:disable Naming/PredicateName
+      def is_to_s(currentvalue) # rubocop:disable Naming/PredicatePrefix
         currentvalue == :absent ? super(currentvalue) : currentvalue.join(delimiter)
       end
 

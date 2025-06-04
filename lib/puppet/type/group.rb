@@ -102,7 +102,7 @@ module Puppet
         super(current)
       end
 
-      def is_to_s(currentvalue) # rubocop:disable Naming/PredicateName
+      def is_to_s(currentvalue) # rubocop:disable Naming/PredicatePrefix
         if provider.respond_to?(:members_to_s)
           currentvalue = '' if currentvalue.nil?
           currentvalue = currentvalue.is_a?(Array) ? currentvalue : currentvalue.split(',')

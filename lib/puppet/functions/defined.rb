@@ -107,7 +107,7 @@ Puppet::Functions.create_function(:defined, Puppet::Functions::InternalFunction)
     required_repeated_param 'Variant[String, Type[CatalogEntry], Type[Type[CatalogEntry]]]', :vals
   end
 
-  def is_defined(scope, *vals) # rubocop:disable Naming/PredicateName
+  def is_defined(scope, *vals) # rubocop:disable Naming/PredicatePrefix
     vals.any? do |val|
       case val
       when String
