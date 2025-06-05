@@ -155,6 +155,6 @@ begin
   end
 rescue LoadError
   task :changelog do
-    abort("Run `bundle install --with packaging` to install the `github_changelog_generator` gem.")
+    abort("Run `bundle install --with release` to install the `github_changelog_generator` gem.")
   end
 end

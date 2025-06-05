@@ -66,13 +66,17 @@ group(:development, optional: true) do
 end
 
 group(:packaging) do
-  gem 'github_changelog_generator'
   gem 'packaging', *location_for(ENV['PACKAGING_LOCATION'] || '~> 0.99')
 end
 
 group(:documentation, optional: true) do
   gem 'gettext-setup', '~> 0.28', require: false, platforms: [:ruby]
   gem 'ronn', '~> 0.7.3', require: false, platforms: [:ruby]
+end
+
+group :release, optional: true do
+  gem 'faraday-retry', require: false
+  gem 'github_changelog_generator', require: false
 end
 
 if File.exist? "#{__FILE__}.local"
