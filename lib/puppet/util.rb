@@ -523,7 +523,11 @@ module Util
 
   module_function :thinmark
 
-  PUPPET_STACK_INSERTION_FRAME = /.*puppet_stack\.rb.*in.*`stack'/
+  PUPPET_STACK_INSERTION_FRAME = if RUBY_VERSION >= '3.4'
+                                   /.*puppet_stack\.rb.*in.*'Puppet::Pops::PuppetStack\.stack'/
+                                 else
+                                   /.*puppet_stack\.rb.*in.*`stack'/
+                                 end
 
   # utility method to get the current call stack and format it to a human-readable string (which some IDEs/editors
   # will recognize as links to the line numbers in the trace)
