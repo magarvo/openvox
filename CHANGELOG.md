@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.37.2](https://github.com/openvoxproject/puppet/tree/7.37.2) (2025-06-06)
+
+[Full Changelog](https://github.com/openvoxproject/puppet/compare/7.37.1...7.37.2)
+
+**Fixed bugs:**
+
+- server\_facts: Switch implementation-\>serverimplementation [\#108](https://github.com/OpenVoxProject/puppet/pull/108) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- rubocop: regenerate todo file & exclude vendor dirs [\#114](https://github.com/OpenVoxProject/puppet/pull/114) ([bastelfreak](https://github.com/bastelfreak))
+- GCG: move it to dedicated gem group [\#111](https://github.com/OpenVoxProject/puppet/pull/111) ([bastelfreak](https://github.com/bastelfreak))
+
+## [7.37.1](https://github.com/openvoxproject/puppet/tree/7.37.1) (2025-06-03)
+
+[Full Changelog](https://github.com/openvoxproject/puppet/compare/7.37.0...7.37.1)
+
 ## [7.37.0](https://github.com/openvoxproject/puppet/tree/7.37.0) (2025-06-03)
 
 [Full Changelog](https://github.com/openvoxproject/puppet/compare/7.36.1...7.37.0)

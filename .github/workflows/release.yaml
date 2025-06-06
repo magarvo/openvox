@@ -27,8 +27,10 @@ jobs:
           mkdir -p ~/.gem
           echo ":github: Bearer ${{ secrets.GITHUB_TOKEN }}" >> ~/.gem/credentials
           chmod 0600 ~/.gem/credentials
-      - name: Publish gem to GitHub packages
-        run: gem push --key github --host https://rubygems.pkg.github.com/OpenVoxProject *.gem
+      # bastelfreak - 2025-06-06
+      # disable for now, authentication to github doesn't work, maybe due to camel case org name??
+      #- name: Publish gem to GitHub packages
+      #  run: gem push --key github --host https://rubygems.pkg.github.com/OpenVoxProject *.gem
       - name: Create Release Page
         shell: bash
         env:
