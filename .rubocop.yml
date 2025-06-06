@@ -16,6 +16,8 @@ AllCops:
     - 'ext/suse/puppet.spec'
     - 'lib/puppet/vendor/**/*'
     - 'lib/puppet/pops/parser/eparser.rb'
+    - 'vendor/**/*'
+    - '.vendor/**/*'
 
 Metrics/AbcSize:
   Enabled: false
