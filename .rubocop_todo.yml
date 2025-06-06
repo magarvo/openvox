@@ -11,6 +11,7 @@ I18n/GetText/DecorateFunctionMessage:
   Enabled: false
 
 # This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: AutoCorrect.
 I18n/GetText/DecorateString:
   Enabled: false
 
@@ -93,7 +94,6 @@ Layout/BeginEndAlignment:
 Layout/BlockAlignment:
   Exclude:
     - 'lib/puppet/defaults.rb'
-    - 'lib/puppet/node/environment.rb'
     - 'lib/puppet/parser/functions/lookup.rb'
     - 'lib/puppet/provider/package/dnfmodule.rb'
     - 'lib/puppet/type/file.rb'
@@ -332,7 +332,6 @@ Layout/MultilineHashBraceLayout:
     - 'lib/puppet/defaults.rb'
     - 'lib/puppet/face/facts.rb'
     - 'lib/puppet/file_serving/metadata.rb'
-    - 'lib/puppet/indirector/catalog/compiler.rb'
     - 'lib/puppet/info_service/class_information_service.rb'
     - 'lib/puppet/pops/evaluator/evaluator_impl.rb'
     - 'lib/puppet/pops/loader/ruby_legacy_function_instantiator.rb'
@@ -588,7 +587,22 @@ Lint/BooleanSymbol:
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: enums
 Lint/ConstantDefinitionInBlock:
-  Enabled: false
+  Exclude:
+    - 'lib/puppet/face/config.rb'
+    - 'lib/puppet/face/help.rb'
+    - 'lib/puppet/face/node/clean.rb'
+    - 'lib/puppet/provider/package/aix.rb'
+    - 'lib/puppet/provider/package/apt.rb'
+    - 'lib/puppet/provider/package/gem.rb'
+    - 'lib/puppet/provider/package/pip.rb'
+    - 'lib/puppet/provider/package/yum.rb'
+    - 'lib/puppet/provider/service/upstart.rb'
+    - 'lib/puppet/provider/user/directoryservice.rb'
+    - 'lib/puppet/type/file.rb'
+    - 'lib/puppet/type/file/source.rb'
+    - 'lib/puppet/type/resources.rb'
+    - 'lib/puppet/type/schedule.rb'
+    - 'lib/puppet/type/tidy.rb'
 
 # This cop supports safe auto-correction (--auto-correct).
 Lint/DeprecatedOpenSSLConstant:
@@ -920,7 +934,10 @@ Naming/VariableNumber:
 # SupportedStyles: inline, group
 Style/AccessModifierDeclarations:
   Exclude:
+    - 'lib/puppet/util/command_line/trollop.rb'
     - 'lib/puppet/util/suidmanager.rb'
+    - 'lib/puppet/util/windows/com.rb'
+    - 'lib/puppet/util/windows/monkey_patches/process.rb'
 
 # This cop supports safe auto-correction (--auto-correct).
 # Configuration parameters: EnforcedStyle.
@@ -1166,11 +1183,6 @@ Style/Encoding:
     - 'lib/puppet/type/file.rb'
     - 'lib/puppet/type/package.rb'
     - 'lib/puppet/util/windows/service.rb'
-
-# This cop supports safe auto-correction (--auto-correct).
-Style/EvalWithLocation:
-  Exclude:
-    - 'lib/puppet/interface/action_builder.rb'
 
 # This cop supports safe auto-correction (--auto-correct).
 Style/EvenOdd:
