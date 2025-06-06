@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.19.2](https://github.com/openvoxproject/puppet/tree/8.19.2) (2025-06-06)
+
+[Full Changelog](https://github.com/openvoxproject/puppet/compare/8.19.1...8.19.2)
+
+**Fixed bugs:**
+
+- server\_facts: Switch implementation-\>serverimplementation [\#107](https://github.com/OpenVoxProject/puppet/pull/107) ([binford2k](https://github.com/binford2k))
+- Reflect Ruby 3.4 stack trace changes [\#100](https://github.com/OpenVoxProject/puppet/pull/100) ([ekohl](https://github.com/ekohl))
+- Add base64 as gem dependencies for Ruby 3.4 [\#98](https://github.com/OpenVoxProject/puppet/pull/98) ([ekohl](https://github.com/ekohl))
+- Add racc gem dependency [\#89](https://github.com/OpenVoxProject/puppet/pull/89) ([ekohl](https://github.com/ekohl))
+
 ## [8.19.1](https://github.com/openvoxproject/puppet/tree/8.19.1) (2025-06-03)
 
 [Full Changelog](https://github.com/openvoxproject/puppet/compare/8.19.0...8.19.1)
