@@ -114,7 +114,7 @@ jobs:
                 "role": "primary",
                 "count": 1,
                 "cpus": 4,
-                "mem_mb": 4096,
+                "mem_mb": 8192,
                 "cpu_mode": "host-model"
               }
             ]
