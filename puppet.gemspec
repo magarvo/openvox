@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency(%q<concurrent-ruby>, "~> 1.0")
   spec.add_runtime_dependency(%q<deep_merge>, "~> 1.0")
   spec.add_runtime_dependency(%q<scanf>, "~> 1.0")
+  spec.add_runtime_dependency(%q<json>, "< 2.9") # last known good version is 2.8.2
 
   # For building platform specific puppet gems...the --platform flag is only supported in newer Ruby versions
   platform = spec.platform.to_s
