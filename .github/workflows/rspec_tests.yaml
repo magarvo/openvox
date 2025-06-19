@@ -38,6 +38,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.cfg.ruby }}
           bundler-cache: true
+      - name: Output Ruby Environment
+        run: bundle env
 
       - name: Run tests on Windows
         if: runner.os == 'Windows'
