@@ -4,6 +4,9 @@ test_name 'C100567: puppet apply of module should translate messages' do
   tag 'audit:medium',
       'audit:acceptance'
 
+  skip_test('i18n test module uses deprecated function; update module to resume testing.')
+  # function validate_absolute_path used https://github.com/eputnam/eputnam-i18ndemo/blob/621d06d/manifests/init.pp#L15
+
   require 'puppet/acceptance/temp_file_utils'
   extend Puppet::Acceptance::TempFileUtils
 
