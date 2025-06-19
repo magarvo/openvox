@@ -7,11 +7,17 @@ namespace :vox do
 
     # Update lib/puppet/version.rb and puppet.gemspec
     puts "Setting version to #{version}"
+
     data = File.read('lib/puppet/version.rb')
-    data = data.sub(/PUPPETVERSION = '\d+\.\d+\.\d+'/, "PUPPETVERSION = '#{version}'")
-    File.write('lib/puppet/version.rb', data)
+    new_data = data.sub(/PUPPETVERSION = '\d+\.\d+\.\d+'/, "PUPPETVERSION = '#{version}'")
+    raise 'Failed to update version in lib/puppet/version.rb' if data == new_data
+
+    File.write('lib/puppet/version.rb', new_data)
+
     data = File.read('puppet.gemspec')
-    data = data.sub(/spec.version = "\d+\.\d+\.\d+"/, "spec.version = \"#{version}\"")
-    File.write('puppet.gemspec', data)
+    new_data = data.sub(/spec.version = "\d+\.\d+\.\d+"/, "spec.version = \"#{version}\"")
+    raise 'Failed to update version in puppet.gemspec' if data == new_data
+
+    File.write('puppet.gemspec', new_data)
   end
 end
