@@ -36,9 +36,9 @@ rest of the [developer documents](docs/index.md).
 
 ## Licensing
 
-See [LICENSE](LICENSE) file. OpenVox is licensed by Vox Pupuli as a community maintained
-implementation of Puppet. Vox Pupuli can be contacted at: voxpupuli@groups.io.
-Puppet itself is licensed by Puppet, Inc. under the Apache license. Puppet, Inc. can be contacted at: info@puppet.com
+See [LICENSE](LICENSE) file. OpenVox is licensed by the OpenVox Project as a community maintained
+implementation of Puppet. The OpenVox Project can be contacted at: openvox@voxpupuli.org.
+Puppet itself is licensed by Puppet, Inc. under the Apache license. Puppet, Inc. can be contacted at: info@puppet.com.
 
 ## Support
 

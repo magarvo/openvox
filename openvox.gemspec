@@ -5,13 +5,13 @@ Gem::Specification.new do |spec|
 
   spec.required_rubygems_version = Gem::Requirement.new("> 1.3.1")
   spec.required_ruby_version = Gem::Requirement.new(">= 3.1.0")
-  spec.authors = ["Vox Pupuli"]
+  spec.authors = ["OpenVox Project"]
   spec.date = "2012-08-17"
   spec.description = <<~EOF
     OpenVox is a community implementation of Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs administrative tasks
     (such as adding users, installing packages, and updating server configurations) based on a centralized specification.
   EOF
-  spec.email = "openvox@voxpupuli.org."
+  spec.email = "openvox@voxpupuli.org"
   spec.executables = ["puppet"]
   spec.files = Dir['[A-Z]*'] + Dir['install.rb'] + Dir['bin/*'] + Dir['lib/**/*'] + Dir['conf/*'] + Dir['man/**/*'] + Dir['tasks/*'] + Dir['locales/**/*'] + Dir['ext/**/*'] + Dir['examples/**/*']
   spec.license = "Apache-2.0"

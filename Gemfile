@@ -13,7 +13,7 @@ def location_for(place, fake_version = nil)
 end
 
 # Make sure these gem requirements are in sync with the gempspec. Specifically,
-# the runtime_dependencies in puppet.gemspec match the runtime dependencies here
+# the runtime_dependencies in openvox.gemspec match the runtime dependencies here
 # (like facter, semantic_puppet, and puppet-resource_api)
 
 gem "facter", *location_for(ENV['FACTER_LOCATION'] || ["~> 4.3"])
