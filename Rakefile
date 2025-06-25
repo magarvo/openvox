@@ -59,7 +59,7 @@ end
 namespace :pl_ci do
   desc 'Build puppet gems'
   task :gem_build, [:gemspec] do |t, args|
-    args.with_defaults(gemspec: 'puppet.gemspec')
+    args.with_defaults(gemspec: 'openvox.gemspec')
     stdout, stderr, status = Open3.capture3(<<~END)
       gem build #{args.gemspec} --platform x86-mingw32 && \
       gem build #{args.gemspec} --platform x64-mingw32 && \
@@ -79,11 +79,11 @@ namespace :pl_ci do
     # this is taken from `rake package:nightly_gem`
     extended_dot_version = %x{git describe --tags --dirty --abbrev=7}.chomp.tr('-', '.')
 
-    # we must create tempfile in the same directory as puppetg.gemspec, since
+    # we must create tempfile in the same directory as openvox.gemspec, since
     # it uses __dir__ to determine which files to include
     require 'tempfile'
     Tempfile.create('gemspec', __dir__) do |dst|
-      File.open('puppet.gemspec', 'r') do |src|
+      File.open('openvox.gemspec', 'r') do |src|
         src.readlines.each do |line|
           if line.match?(/version\s*=\s*['"][0-9.]+['"]/)
             line = "spec.version = '#{extended_dot_version}'"
