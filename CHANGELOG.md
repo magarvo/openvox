@@ -2,36 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
-## [8.19.2](https://github.com/openvoxproject/puppet/tree/8.19.2) (2025-06-06)
+## [8.20.0](https://github.com/openvoxproject/openvox/tree/8.20.0) (2025-06-27)
 
-[Full Changelog](https://github.com/openvoxproject/puppet/compare/8.19.1...8.19.2)
-
-**Fixed bugs:**
-
-- server\_facts: Switch implementation-\>serverimplementation [\#107](https://github.com/OpenVoxProject/puppet/pull/107) ([binford2k](https://github.com/binford2k))
-- Reflect Ruby 3.4 stack trace changes [\#100](https://github.com/OpenVoxProject/puppet/pull/100) ([ekohl](https://github.com/ekohl))
-- Add base64 as gem dependencies for Ruby 3.4 [\#98](https://github.com/OpenVoxProject/puppet/pull/98) ([ekohl](https://github.com/ekohl))
-- Add racc gem dependency [\#89](https://github.com/OpenVoxProject/puppet/pull/89) ([ekohl](https://github.com/ekohl))
-
-## [8.19.1](https://github.com/openvoxproject/puppet/tree/8.19.1) (2025-06-03)
-
-[Full Changelog](https://github.com/openvoxproject/puppet/compare/8.19.0...8.19.1)
-
-**Fixed bugs:**
-
-- Fix invalid gemspec in AIO package [\#91](https://github.com/OpenVoxProject/puppet/pull/91) ([smortex](https://github.com/smortex))
-
-## [8.19.0](https://github.com/openvoxproject/puppet/tree/8.19.0) (2025-05-30)
-
-[Full Changelog](https://github.com/openvoxproject/puppet/compare/8.18.1...8.19.0)
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.19.2...8.20.0)
 
 **Implemented enhancements:**
 
-- Add `implementation` fact to agent and server. [\#63](https://github.com/OpenVoxProject/puppet/pull/63) ([ffrank](https://github.com/ffrank))
+- Switch from facter to openfact [\#142](https://github.com/OpenVoxProject/openvox/pull/142) ([smortex](https://github.com/smortex))
+- \(PUP-12083\) Update soft limit warning for fact value & name length [\#137](https://github.com/OpenVoxProject/openvox/pull/137) ([bastelfreak](https://github.com/bastelfreak))
 
 **Fixed bugs:**
 
-- Replace `erase` with `remove`, since it's no longer supported with DNF5 [\#68](https://github.com/OpenVoxProject/puppet/pull/68) ([Stricken1670](https://github.com/Stricken1670))
+- Maintain consistent JSON formatting  [\#132](https://github.com/OpenVoxProject/openvox/pull/132) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- cleanup gem metadata after Perforce-\>OpenVoxProject migration [\#140](https://github.com/OpenVoxProject/openvox/pull/140) ([smortex](https://github.com/smortex))
+
+## [8.19.2](https://github.com/openvoxproject/openvox/tree/8.19.2) (2025-06-06)
+
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.19.1...8.19.2)
+
+**Fixed bugs:**
+
+- server\_facts: Switch implementation-\>serverimplementation [\#107](https://github.com/OpenVoxProject/openvox/pull/107) ([binford2k](https://github.com/binford2k))
+- Reflect Ruby 3.4 stack trace changes [\#100](https://github.com/OpenVoxProject/openvox/pull/100) ([ekohl](https://github.com/ekohl))
+- Add base64 as gem dependencies for Ruby 3.4 [\#98](https://github.com/OpenVoxProject/openvox/pull/98) ([ekohl](https://github.com/ekohl))
+- Add racc gem dependency [\#89](https://github.com/OpenVoxProject/openvox/pull/89) ([ekohl](https://github.com/ekohl))
+
+## [8.19.1](https://github.com/openvoxproject/openvox/tree/8.19.1) (2025-06-03)
+
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.19.0...8.19.1)
+
+**Fixed bugs:**
+
+- Fix invalid gemspec in AIO package [\#91](https://github.com/OpenVoxProject/openvox/pull/91) ([smortex](https://github.com/smortex))
+
+## [8.19.0](https://github.com/openvoxproject/openvox/tree/8.19.0) (2025-05-30)
+
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.18.1...8.19.0)
+
+**Implemented enhancements:**
+
+- Add `implementation` fact to agent and server. [\#63](https://github.com/OpenVoxProject/openvox/pull/63) ([ffrank](https://github.com/ffrank))
+
+**Fixed bugs:**
+
+- Replace `erase` with `remove`, since it's no longer supported with DNF5 [\#68](https://github.com/OpenVoxProject/openvox/pull/68) ([Stricken1670](https://github.com/Stricken1670))
 
 
 
