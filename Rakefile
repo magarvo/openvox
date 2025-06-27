@@ -158,7 +158,7 @@ begin
     All notable changes to this project will be documented in this file.
     HEADER
     config.user = "openvoxproject"
-    config.project = "puppet"
+    config.project = "openvox"
     config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
     config.since_tag = "8.18.1"
     config.future_release = Puppet::PUPPETVERSION
