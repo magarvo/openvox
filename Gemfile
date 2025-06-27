@@ -14,9 +14,9 @@ end
 
 # Make sure these gem requirements are in sync with the gempspec. Specifically,
 # the runtime_dependencies in openvox.gemspec match the runtime dependencies here
-# (like facter, semantic_puppet, and puppet-resource_api)
+# (like openfact, semantic_puppet, and puppet-resource_api)
 
-gem "facter", *location_for(ENV['FACTER_LOCATION'] || ["~> 4.3"])
+gem "openfact", *location_for(ENV['OPENFACT_LOCATION'] || ["~> 5.0"])
 gem "semantic_puppet", *location_for(ENV['SEMANTIC_PUPPET_LOCATION'] || ["~> 1.0"])
 gem "puppet-resource_api", *location_for(ENV['RESOURCE_API_LOCATION'] || ["~> 1.5"])
 
