@@ -39,7 +39,7 @@ describe Puppet::Type.type(:package), "when choosing a default package provider"
         :rug
       end
     when 'FreeBSD'
-      :ports
+      :pkgng
     when 'OpenBSD'
       :openbsd
     when 'DragonFly'
