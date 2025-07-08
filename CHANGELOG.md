@@ -1,10 +1,21 @@
-## Unreleased
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
-## [8.19.2](https://github.com/openvoxproject/openvox-agent/tree/8.19.2) (2025-06-06)
+## [8.20.0](https://github.com/openvoxproject/openvox-agent/tree/8.20.0) (2025-07-08)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.19.2...8.20.0)
+
+**Implemented enhancements:**
+
+- puppet-runtime: Update 202505151-\>202507081 [\#78](https://github.com/OpenVoxProject/openvox-agent/pull/78) ([bastelfreak](https://github.com/bastelfreak))
+- Switch from Facter to OpenFact & openvox: Update 8.19.2-\>.20.0 [\#77](https://github.com/OpenVoxProject/openvox-agent/pull/77) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- \[Bug\]: MacOS package build not reproducible [\#75](https://github.com/OpenVoxProject/openvox-agent/issues/75)
+
+## [8.19.2](https://github.com/openvoxproject/openvox-agent/tree/8.19.2) (2025-06-10)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.19.1...8.19.2)
 
@@ -13,6 +24,7 @@ All notable changes to this project will be documented in this file.
 - \[Bug\]: warning coming out of puppet lookup in 8.19.1 [\#66](https://github.com/OpenVoxProject/openvox-agent/issues/66)
 - \[Bug\]: version 8.19.0 - cannot load such file -- /opt/puppetlabs/puppet/lib/ruby/gems/3.2.0/specifications/lib/puppet/version [\#56](https://github.com/OpenVoxProject/openvox-agent/issues/56)
 - openvox: Update 8.19.1-\>8.19.2 [\#73](https://github.com/OpenVoxProject/openvox-agent/pull/73) ([bastelfreak](https://github.com/bastelfreak))
+- Fix openvox 7 builds [\#69](https://github.com/OpenVoxProject/openvox-agent/pull/69) ([jpartlow](https://github.com/jpartlow))
 
 ## [8.19.1](https://github.com/openvoxproject/openvox-agent/tree/8.19.1) (2025-06-03)
 
