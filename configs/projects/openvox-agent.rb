@@ -80,7 +80,7 @@ project 'openvox-agent' do |proj|
 
   proj.setting(:service_conf, File.join(proj.install_root, 'service_conf'))
 
-  proj.description "The OpenVox Agent package contains all of the elements needed to run the agent, including ruby and facter."
+  proj.description "The OpenVox Agent package contains all of the elements needed to run the agent, including ruby and openfact."
   if ENV['OPENVOX_AGENT_VERSION']
     proj.version ENV['OPENVOX_AGENT_VERSION']
   else
@@ -125,7 +125,7 @@ project 'openvox-agent' do |proj|
   end
 
   proj.component "puppet"
-  proj.component "facter"
+  proj.component "openfact"
 
   proj.component "puppet-resource_api"
 

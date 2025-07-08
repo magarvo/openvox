@@ -1,4 +1,4 @@
-component "facter" do |pkg, settings, platform|
+component "openfact" do |pkg, settings, platform|
   pkg.load_from_json('configs/components/facter.json')
 
   pkg.build_requires 'puppet-runtime' # Provides ruby and rubygem-deep-merge
@@ -28,7 +28,7 @@ component "facter" do |pkg, settings, platform|
     ]
   end
 
-  pkg.install_file "facter.gemspec", "#{settings[:gem_home]}/specifications/#{pkg.get_name}-#{pkg.get_version_forced}.gemspec"
+  pkg.install_file "openfact.gemspec", "#{settings[:gem_home]}/specifications/#{pkg.get_name}-#{pkg.get_version_forced}.gemspec"
 
   if platform.is_windows?
     pkg.directory File.join(settings[:sysconfdir], 'facter', 'facts.d')
