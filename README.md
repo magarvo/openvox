@@ -12,19 +12,12 @@ The Puppet Agent
 Overview
 ---
 The puppet agent is a collection of software that is required for puppet and
-its dependencies to run. This includes
-[puppet](https://github.com/OpenVoxProject/puppet),
-[facter](https://github.com/OpenVoxProject/facter), and other Puppet software, but
-also vendored dependencies like ruby, curl, openssl, and more.
+its dependencies to run.
+This includes [puppet](https://github.com/OpenVoxProject/openvox), [facter](https://github.com/OpenVoxProject/openfact), and other Puppet software, but also vendored dependencies like ruby, curl, openssl, and more.
 
-This repository contains configuration to build puppet-agent and the facter gem
-for all of Puppet's supported platforms using
-[vanagon](https://github.com/OpenVoxProject/vanagon), a packaging utility.
+This repository contains configuration to build puppet-agent and the openfact gem for all of Puppet's supported platforms using [vanagon](https://github.com/OpenVoxProject/vanagon), a packaging utility.
 
-The full list of software components built into the puppet agent and the
-facter gem can be found in their [project definitions](configs/projects/), and
-each of the components has its own configuration in the [components
-directory](configs/components/).
+The full list of software components built into the puppet agent and the openfact gem can be found in their [project definitions](configs/projects/), and each of the components has its own configuration in the [components directory](configs/components/).
 
 Components that are not developed by Puppet (like ruby, curl, or openssl) are
 built separately into a tarball and consumed here in the
