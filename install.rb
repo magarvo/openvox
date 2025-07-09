@@ -85,9 +85,7 @@ def do_man(man, strip = 'man/')
     # Solaris does not support gzipped man pages. When called with
     # --no-check-prereqs/without facter the default gzip behavior still applies
     unless $osname == "Solaris"
-      gzip = %x{which gzip}
-      gzip.chomp!
-      %x{#{gzip} --force --no-name #{omf}}
+      %x{gzip --force --no-name #{omf}}
     end
   end
 end
