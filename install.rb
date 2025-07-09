@@ -38,8 +38,6 @@ require 'ostruct'
 
 IS_WINDOWS = RUBY_PLATFORM.match?(/(mswin|mingw)/)
 
-PREREQS = %w{openssl cgi}
-
 InstallOptions = OpenStruct.new
 
 def glob(list)
@@ -98,24 +96,11 @@ def do_locales(locale, strip = 'locales/')
   end
 end
 
-# Verify that all of the prereqs are installed
-def check_prereqs
-  PREREQS.each { |pre|
-    begin
-      require pre
-    rescue LoadError
-      puts "Could not load #{pre}; cannot install"
-      exit(-1)
-    end
-  }
-end
-
 ##
 # Prepare the file installation.
 #
 def prepare_installation
   InstallOptions.configs = true
-  InstallOptions.check_prereqs = true
   InstallOptions.batch_files = true
 
   ARGV.options do |opts|
@@ -159,9 +144,6 @@ def prepare_installation
     end
     opts.on('--mandir[=OPTIONAL]', 'Installation directory for man pages', 'overrides RbConfig::CONFIG["mandir"]') do |mandir|
       InstallOptions.mandir = mandir
-    end
-    opts.on('--[no-]check-prereqs', 'Prevents validation of prerequisite libraries', 'Default on') do |prereq|
-      InstallOptions.check_prereqs = prereq
     end
     opts.on('--no-batch-files', 'Prevents installation of batch files for windows', 'Default off') do |batch_files|
       InstallOptions.batch_files = false
