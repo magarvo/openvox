@@ -1,5 +1,5 @@
 component "openfact" do |pkg, settings, platform|
-  pkg.load_from_json('configs/components/facter.json')
+  pkg.load_from_json('configs/components/openfact.json')
 
   pkg.build_requires 'puppet-runtime' # Provides ruby and rubygem-deep-merge
 
