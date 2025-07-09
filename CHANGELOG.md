@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 **Fixed bugs:**
 
 - \[Bug\]: MacOS package build not reproducible [\#75](https://github.com/OpenVoxProject/openvox-agent/issues/75)
+- Rename facter leftovers to openfact [\#82](https://github.com/OpenVoxProject/openvox-agent/pull/82) ([bastelfreak](https://github.com/bastelfreak))
 - puppet-runtime: Fix artifacts url [\#80](https://github.com/OpenVoxProject/openvox-agent/pull/80) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [8.19.2](https://github.com/openvoxproject/openvox-agent/tree/8.19.2) (2025-06-10)
