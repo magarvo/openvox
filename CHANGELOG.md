@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.21.0](https://github.com/openvoxproject/openvox/tree/8.21.0) (2025-07-09)
+
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.20.0...8.21.0)
+
+**Implemented enhancements:**
+
+- Remove facter from install.rb [\#147](https://github.com/OpenVoxProject/openvox/pull/147) ([ekohl](https://github.com/ekohl))
+
 ## [8.20.0](https://github.com/openvoxproject/openvox/tree/8.20.0) (2025-06-27)
 
 [Full Changelog](https://github.com/openvoxproject/openvox/compare/8.19.2...8.20.0)
