@@ -1,6 +1,6 @@
 require 'open3'
 
-OPENVOX_AGENT_VERSION = "8.20.0"
+OPENVOX_AGENT_VERSION = "8.21.0"
 
 RED = "\033[31m".freeze
 GREEN = "\033[32m".freeze

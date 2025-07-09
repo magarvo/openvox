@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.21.0](https://github.com/openvoxproject/openvox-agent/tree/8.21.0) (2025-07-09)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.20.0...8.21.0)
+
+**Implemented enhancements:**
+
+- openvox: Update 8.20.0-\>8.21.0 [\#87](https://github.com/OpenVoxProject/openvox-agent/pull/87) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- OpenVox: Remove build dependency to facter [\#86](https://github.com/OpenVoxProject/openvox-agent/pull/86) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [8.20.0](https://github.com/openvoxproject/openvox-agent/tree/8.20.0) (2025-07-09)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.19.2...8.20.0)
