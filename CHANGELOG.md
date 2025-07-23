@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.21.1](https://github.com/openvoxproject/openvox/tree/8.21.1) (2025-07-23)
+
+[Full Changelog](https://github.com/openvoxproject/openvox/compare/8.21.0...8.21.1)
+
+**Fixed bugs:**
+
+- Make passing invalid options to install.rb fatal [\#156](https://github.com/OpenVoxProject/openvox/pull/156) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- Revert "Mark some failing 8.3 Windows tests as pending" [\#159](https://github.com/OpenVoxProject/openvox/pull/159) ([ekohl](https://github.com/ekohl))
+- \(maint\) Drop debian-10 from testing matrix [\#152](https://github.com/OpenVoxProject/openvox/pull/152) ([jpartlow](https://github.com/jpartlow))
+
 ## [8.21.0](https://github.com/openvoxproject/openvox/tree/8.21.0) (2025-07-09)
 
 [Full Changelog](https://github.com/openvoxproject/openvox/compare/8.20.0...8.21.0)
