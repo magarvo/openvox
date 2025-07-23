@@ -122,21 +122,18 @@ component "puppet" do |pkg, settings, platform|
     configdir = File.join(settings[:sysconfdir], 'puppet', 'etc')
     logdir = File.join(settings[:sysconfdir], 'puppet', 'var', 'log')
     piddir = File.join(settings[:sysconfdir], 'puppet', 'var', 'run')
-    prereqs = "--check-prereqs"
   else
     vardir = File.join(settings[:prefix], 'cache')
     publicdir = File.join(settings[:prefix], 'public')
     configdir = settings[:puppet_configdir]
     logdir = settings[:logdir]
     piddir = settings[:piddir]
-    prereqs = "--no-check-prereqs"
   end
 
   pkg.install do
     [
       "#{settings[:host_ruby]} install.rb \
         --ruby=#{File.join(settings[:bindir], 'ruby')} \
-        #{prereqs} \
         --bindir=#{settings[:bindir]} \
         --configdir=#{configdir} \
         --sitelibdir=#{settings[:ruby_vendordir]} \
