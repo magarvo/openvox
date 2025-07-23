@@ -159,6 +159,9 @@ def prepare_installation
     end
 
     opts.parse!
+  rescue OptionParser::InvalidOption => e
+    $stderr.puts e
+    exit 1
   end
 
   # Mac OS X 10.5 and higher declare bindir
