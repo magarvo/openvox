@@ -10,7 +10,32 @@ on:
 permissions:
   contents: read
 
+env:
+  BUNDLE_SET: "without packaging documentation release"
+
 jobs:
+  checks:
+    name: ${{ matrix.cfg.check }}
+    strategy:
+      matrix:
+        cfg:
+          - {check: rubocop, os: ubuntu-latest, ruby: '3.1'}
+          - {check: warnings, os: ubuntu-latest, ruby: '3.1'}
+
+    runs-on: ${{ matrix.cfg.os }}
+    steps:
+      - name: Checkout current PR
+        uses: actions/checkout@v4
+
+      - name: Install ruby version ${{ matrix.cfg.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.cfg.ruby }}
+          bundler-cache: true
+
+      - name: Run ${{ matrix.cfg.check }} check
+        run: bundle exec rake ${{ matrix.cfg.check }}
+
   rspec_tests:
     name: ${{ matrix.cfg.os }}(ruby ${{ matrix.cfg.ruby }})
     strategy:
@@ -27,8 +52,6 @@ jobs:
           - {os: windows-2025, ruby: '3.4'} # openssl 3
 
     runs-on: ${{ matrix.cfg.os }}
-    env:
-      BUNDLE_SET: "without packaging documentation"
     steps:
       - name: Checkout current PR
         uses: actions/checkout@v4
@@ -85,3 +108,16 @@ jobs:
           fi
 
           bundle exec rake parallel:spec
+
+  tests:
+    if: always()
+    needs:
+      - checks
+      - rspec_tests
+    runs-on: ubuntu-24.04
+    name: Test suite
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
