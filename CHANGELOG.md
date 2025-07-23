@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.21.1](https://github.com/openvoxproject/openvox-agent/tree/8.21.1) (2025-07-23)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.21.0...8.21.1)
+
+**Fixed bugs:**
+
+- Stop passing --\[no-\]check-prereqs to install.rb [\#96](https://github.com/OpenVoxProject/openvox-agent/pull/96) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- Promote puppet to 8.21.0-\>8.21.1 [\#98](https://github.com/OpenVoxProject/openvox-agent/pull/98) ([bastelfreak](https://github.com/bastelfreak))
+- \(maint\) Drop debian-10 from testing matrix [\#93](https://github.com/OpenVoxProject/openvox-agent/pull/93) ([jpartlow](https://github.com/jpartlow))
+
 ## [8.21.0](https://github.com/openvoxproject/openvox-agent/tree/8.21.0) (2025-07-09)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.20.0...8.21.0)
