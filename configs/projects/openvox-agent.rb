@@ -7,16 +7,11 @@ project 'openvox-agent' do |proj|
   # - Modifications to global settings like flags and target directories should be made in puppet-runtime.
   # - Settings included in this file should apply only to local components in this repository.
   runtime_details = JSON.parse(File.read('configs/components/puppet-runtime.json'))
-  pxp_agent_details = JSON.parse(File.read('configs/components/pxp-agent.json'))
   agent_branch = 'main'
 
   settings[:puppet_runtime_version] = runtime_details['version']
   settings[:puppet_runtime_location] = runtime_details['location']
   settings[:puppet_runtime_basename] = "agent-runtime-#{agent_branch}-#{runtime_details['version']}.#{platform.name}"
-
-  settings[:pxp_agent_version] = pxp_agent_details['version']
-  settings[:pxp_agent_location] = pxp_agent_details['location']
-  settings[:pxp_agent_basename] = "pxp-agent-#{pxp_agent_details['version']}.#{platform.name}"
 
   settings_uri = File.join(runtime_details['location'], "#{proj.settings[:puppet_runtime_basename]}.settings.yaml")
   sha1sum_uri = "#{settings_uri}.sha1"
@@ -65,7 +60,6 @@ project 'openvox-agent' do |proj|
     # Directory IDs
     proj.setting(:bindir_id, "bindir")
 
-    proj.setting(:pxp_root, File.join(proj.install_root, "pxp-agent"))
     proj.setting(:service_dir, File.join(proj.install_root, "service"))
   end
 
@@ -112,18 +106,6 @@ project 'openvox-agent' do |proj|
   proj.component "puppet-runtime"
   proj.component 'openssl-fips' if platform.is_fips?
 
-  # We are currently not building pxp-agent for Windows because it is unused for
-  # OpenVox aside from execution_wrapper which is soon to be replaced, and because
-  # we're having trouble getting things compiled correctly with the modern toolchain.
-  # For a Windows, only build these if BUILD_WINDOWS_PXP_AGENT is set.
-  # For other platforms, build these unless NO_PXP_AGENT is set.
-  build_pxp_agent = platform.is_windows? ? !ENV['BUILD_WINDOWS_PXP_AGENT'].to_s.empty? : ENV['NO_PXP_AGENT'].to_s.empty?
-  if build_pxp_agent
-    proj.component "pxp-agent"
-  else
-    proj.setting(:exclude_wix_templates, ['service.pxp-agent.wxs.erb'])
-  end
-
   proj.component "puppet"
   proj.component "openfact"
 
@@ -138,6 +120,9 @@ project 'openvox-agent' do |proj|
   unless platform.is_windows?
     proj.component "wrapper-script"
   end
+
+  # Execution wrapper used by Choria
+  proj.component "execution_wrapper"
 
   # Vendored modules
   proj.component "module-puppetlabs-augeas_core"

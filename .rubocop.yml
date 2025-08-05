@@ -10,6 +10,7 @@ AllCops:
     - 'vendor/**/*'
     - '.vendor/**/*'
     - 'bundle/**/*'
+    - 'resources/files/execution_wrapper'
 
 plugins:
   - rubocop-rake
