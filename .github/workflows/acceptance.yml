@@ -88,40 +88,12 @@ jobs:
   acceptance:
     uses: 'OpenVoxProject/shared-actions/.github/workflows/beaker_acceptance.yml@main'
     with:
+      suite-name: openvox
       ref: ${{ inputs.ref }}
-      project-name: openvox
       fork: ${{ inputs.fork }}
-      install-openvox: true
       openvox-collection: ${{ inputs.collection }}
       openvox-agent-version: ${{ inputs.openvox-agent-version }}
       openvox-agent-pre-release-build: ${{ inputs.pre-release-build }}
-      install-openvox-server: true
       openvox-server-version: ${{ inputs.openvox-server-version }}
       openvox-server-pre-release-build: ${{ inputs.pre-release-build }}
-      install-openvoxdb: false
-      install-openvoxdb-termini: false
       artifacts-url: ${{ inputs.artifacts-url }}
-      acceptance-working-dir: 'acceptance'
-      acceptance-pre-suite: |-
-        [
-          "pre-suite"
-        ]
-      acceptance-tests: |-
-        [
-          "tests"
-        ]
-      beaker-options: |-
-        {
-          "helper":       "lib/helper.rb",
-          "options_file": "config/aio/options.rb"
-        }
-      vms: |-
-        [
-          {
-            "role": "primary",
-            "count": 1,
-            "cpus": 4,
-            "mem_mb": 8192,
-            "cpu_mode": "host-model"
-          }
-        ]
