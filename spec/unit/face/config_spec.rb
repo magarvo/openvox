@@ -131,6 +131,7 @@ trace = true
     before(:each) do
       Puppet[:config] = config_file
       allow(Puppet::FileSystem).to receive(:pathname).with(path.to_s).and_return(path)
+      allow(Puppet::FileSystem).to receive(:dir_mkpath)
       allow(Puppet::FileSystem).to receive(:touch)
     end
 
