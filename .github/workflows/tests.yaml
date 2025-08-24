@@ -78,6 +78,8 @@ jobs:
           chcp
           Get-WinSystemLocale
           Get-ChildItem Env: | % { Write-Output "$($_.Key): $($_.Value)"  }
+          # Enable Windows filesystem 8.3 support, see https://github.com/OpenVoxProject/openvox/pull/180
+          reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_DWORD /v NtfsDisable8dot3NameCreation /d 0 /f
           # list current OpenSSL install
           gem list openssl
           ruby -ropenssl -e 'puts "OpenSSL Version - #{OpenSSL::OPENSSL_VERSION}"; puts "OpenSSL Library Version - #{OpenSSL::OPENSSL_LIBRARY_VERSION}"'
