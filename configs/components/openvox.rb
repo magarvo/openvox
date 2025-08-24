@@ -1,5 +1,5 @@
-component "puppet" do |pkg, settings, platform|
-  pkg.load_from_json("configs/components/puppet.json")
+component "openvox" do |pkg, settings, platform|
+  pkg.load_from_json("configs/components/openvox.json")
 
   pkg.build_requires "puppet-runtime" # Provides ruby and rubygem-win32-dir
 
