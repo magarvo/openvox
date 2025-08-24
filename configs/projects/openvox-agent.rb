@@ -106,7 +106,7 @@ project 'openvox-agent' do |proj|
   proj.component "puppet-runtime"
   proj.component 'openssl-fips' if platform.is_fips?
 
-  proj.component "puppet"
+  proj.component "openvox"
   proj.component "openfact"
 
   proj.component "puppet-resource_api"
