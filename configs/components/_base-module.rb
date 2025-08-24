@@ -26,8 +26,11 @@ unless match_data
 end
 module_author, module_name = match_data.captures
 
-# Modules must have puppet
-pkg.build_requires 'puppet'
+# Modules must have openvox. This tells vanagon to build openvox first, since
+# the component exists in the project. This is why it's 'openvox' rather than
+# 'openvox-agent', because it's not actually installing it with the package
+# manager.
+pkg.build_requires 'openvox'
 
 # This is just a tarball; Skip unpack, patch, configure, build, check steps
 pkg.install_only true
