@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.22.0](https://github.com/openvoxproject/openvox-agent/tree/8.22.0) (2025-08-25)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.21.1...8.22.0)
+
+**Merged pull requests:**
+
+- Promotions for 8.22.0 and fix for renaming the puppet component [\#110](https://github.com/OpenVoxProject/openvox-agent/pull/110) ([nmburgan](https://github.com/nmburgan))
+- Change puppet component to openvox [\#109](https://github.com/OpenVoxProject/openvox-agent/pull/109) ([nmburgan](https://github.com/nmburgan))
+- Remove EOL platforms [\#108](https://github.com/OpenVoxProject/openvox-agent/pull/108) ([nmburgan](https://github.com/nmburgan))
+- Add Ubuntu 25.04 [\#107](https://github.com/OpenVoxProject/openvox-agent/pull/107) ([genebean](https://github.com/genebean))
+- Updates for FIPS agents [\#106](https://github.com/OpenVoxProject/openvox-agent/pull/106) ([nmburgan](https://github.com/nmburgan))
+- OSX non-root user changes [\#105](https://github.com/OpenVoxProject/openvox-agent/pull/105) ([shaun-rutherford](https://github.com/shaun-rutherford))
+- Remove pxp-agent, add execution\_wrapper [\#101](https://github.com/OpenVoxProject/openvox-agent/pull/101) ([nmburgan](https://github.com/nmburgan))
+
 ## [8.21.1](https://github.com/openvoxproject/openvox-agent/tree/8.21.1) (2025-07-23)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.21.0...8.21.1)
