@@ -3,10 +3,10 @@
 
   <Fragment>
 
-    <ComponentGroup Id="<%= get_service("puppet").component_group_id %>">
+    <ComponentGroup Id="<%= get_service("openvox").component_group_id %>">
       <Component Id='PuppetServiceAutomatic'
                  Guid="639ECD7F-6186-43D5-9E1A-FC0278DBEE15"
-                 Directory="<%= get_service("puppet").bindir_id %>"
+                 Directory="<%= get_service("openvox").bindir_id %>"
                  Win64="<%= settings[:win64] %>">
         <Condition>
           <![CDATA[ (PUPPET_AGENT_STARTUP_MODE ~<> "manual") AND (PUPPET_AGENT_STARTUP_MODE ~<> "disabled") ]]>
@@ -37,7 +37,7 @@
 
       <Component Id='PuppetServiceManual'
                  Guid="752A5A25-9619-4EBA-AA8B-12D8C8688236"
-                 Directory="<%= get_service("puppet").bindir_id %>"
+                 Directory="<%= get_service("openvox").bindir_id %>"
                  Win64="<%= settings[:win64] %>">
         <Condition>
           <![CDATA[PUPPET_AGENT_STARTUP_MODE ~= "manual"]]>
@@ -67,7 +67,7 @@
 
       <Component Id='PuppetServiceDisabled'
                  Guid="4D3A8CAF-C675-46AC-B3AD-75F00581D0DB"
-                 Directory="<%= get_service("puppet").bindir_id %>"
+                 Directory="<%= get_service("openvox").bindir_id %>"
                  Win64="<%= settings[:win64] %>">
         <Condition>
           <![CDATA[PUPPET_AGENT_STARTUP_MODE ~= "disabled"]]>
