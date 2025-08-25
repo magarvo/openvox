@@ -1,5 +1,5 @@
 ---
-name: Release
+name: Create GitHub Release Page
 
 on:
   push:
