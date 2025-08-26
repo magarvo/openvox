@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.22.1](https://github.com/openvoxproject/openvox-agent/tree/8.22.1) (2025-08-26)
+
+[Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.22.0...8.22.1)
+
+**Fixed bugs:**
+
+- Revert puppet -\> openvox rename [\#116](https://github.com/OpenVoxProject/openvox-agent/pull/116) ([nmburgan](https://github.com/nmburgan))
+
 ## [8.22.0](https://github.com/openvoxproject/openvox-agent/tree/8.22.0) (2025-08-25)
 
 [Full Changelog](https://github.com/openvoxproject/openvox-agent/compare/8.21.1...8.22.0)
