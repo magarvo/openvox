@@ -171,6 +171,7 @@ Puppet::Face.define(:config, '0.0.1') do
       end
 
       path = Puppet::FileSystem.pathname(Puppet.settings.which_configuration_file)
+      Puppet::FileSystem.dir_mkpath(path)
       Puppet::FileSystem.touch(path)
       Puppet::FileSystem.open(path, nil, 'r+:UTF-8') do |file|
         Puppet::Settings::IniFile.update(file) do |config|
