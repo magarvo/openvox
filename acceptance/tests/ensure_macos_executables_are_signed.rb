@@ -1,5 +1,5 @@
 test_name 'Ensure puppet executables are codesigned on mac OS' do
-  confine :to, :platform => /osx/
+  confine :to, :platform => /macos/
   tag 'audit:high'
 
   agents.each do |agent|

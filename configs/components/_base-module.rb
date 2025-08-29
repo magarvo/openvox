@@ -46,6 +46,6 @@ pkg.install do
     # Rename appropriately for use with puppet
     "mv #{module_author}-#{module_name} #{target_directory}",
     # Remove git and CI-related files
-    "rm -r #{File.join(target_directory, '.[!.]*')} 2>/dev/null",
+    "rm -rf #{File.join(target_directory, '.[!.]*')}",
   ]
 end
