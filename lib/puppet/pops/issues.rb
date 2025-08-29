@@ -922,12 +922,12 @@ module Issues
     _("The 'bolt' library is required to %{action}") % { action: action }
   end
 
-  UNKNOWN_TASK = issue :UNKNOWN_TASK, :type_name do
-    _('Task not found: %{type_name}') % { type_name: type_name }
+  UNKNOWN_TASK = issue :UNKNOWN_TASK, :task_name do
+    _('Task not found: %{task_name}') % { task_name: task_name }
   end
 
-  LOADER_FAILURE = issue :LOADER_FAILURE, :type do
-    _('Failed to load: %{type_name}') % { type: type }
+  LOADER_FAILURE = issue :LOADER_FAILURE, :task_name do
+    _('Failed to load: %{task_name}') % { task_name: task_name }
   end
 end
 end
