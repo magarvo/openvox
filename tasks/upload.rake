@@ -8,7 +8,10 @@ namespace :vox do
     arch = nil
     if args[:platform]
       parts = args[:platform].split('-')
-      os = parts[0].gsub('fedora','fc') + parts[1]
+      os = parts[0].gsub('fedora','fc')
+      osver = parts[1]
+      # On MacOS, the dmg name has "macos.all"
+      os = os == 'macos' ? "#{os}.#{osver}" : "#{os}#{osver}"
       arch = parts[2]
     end
 

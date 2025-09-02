@@ -16,7 +16,7 @@ component "pl-ruby-patch" do |pkg, settings, platform|
     ruby_api_version = settings[:ruby_version].gsub(/\.\d*$/, '.0')
     ruby_version_y = settings[:ruby_version].gsub(/(\d+)\.(\d+)\.(\d+)/, '\1.\2')
 
-    base_ruby = if platform.name =~ /osx/
+    base_ruby = if platform.name =~ /macos/
                   "/usr/local/opt/ruby@#{ruby_version_y}/lib/ruby/#{ruby_api_version}"
                 else
                   "/opt/pl-build-tools/lib/ruby/2.1.0"
