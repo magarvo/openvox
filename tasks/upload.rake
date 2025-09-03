@@ -25,19 +25,24 @@ namespace :vox do
     # Ensure the AWS CLI isn't going to fail with the given parameters
     run_command("#{s3} ls s3://#{bucket}/")
 
-    prepend = File.directory?('/cygdrive/') ? 'C:/cygwin64/' : ''
-    glob = "#{prepend}#{__dir__}/../output/**/*#{munged_tag}*"
+    glob = "#{__dir__}/../output/**/*#{munged_tag}*"
     if os
-      # "arch" is not used here because we are currently horrifyingly
-      # inconsistent with the platform -> package name
-      # (e.g. debian-12-aarch64 ends up as debian12.arm64).
-      glob += "#{os}*"
+      if os =~ /windows/
+        # We don't put the OS in the filename for Windows
+        glob += "#{arch}.msi"
+      else
+        # "arch" is not used here because we are currently horrifyingly
+        # inconsistent with the platform -> package name
+        # (e.g. debian-12-aarch64 ends up as debian12.arm64).
+        glob += "#{os}*"
+      end
     end
     files = Dir.glob(glob)
     abort 'No files for the given tag found in the output directory.' if files.empty?
 
     path = "s3://#{bucket}/#{component}/#{args[:tag]}"
     files.each do |f|
+      f = `cygpath -m #{f}`.chomp if os =~ /windows/
       run_command("#{s3} cp #{f} #{path}/#{File.basename(f)}", silent: false)
     end
   end
