@@ -25,7 +25,7 @@ namespace :vox do
     # Ensure the AWS CLI isn't going to fail with the given parameters
     run_command("#{s3} ls s3://#{bucket}/")
 
-    glob = "#{__dir__}/../output/**/*#{munged_tag}*"
+    glob = "#{__dir__}/../packaging/output/**/*#{munged_tag}*"
     if os
       if os =~ /windows/
         # We don't put the OS in the filename for Windows
