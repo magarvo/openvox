@@ -70,7 +70,9 @@ end
 
 group(:packaging) do
   gem 'packaging', *location_for(ENV['PACKAGING_LOCATION'] || '~> 0.105')
-  gem 'vanagon', *location_for(ENV['VANAGON_LOCATION'] || 'https://github.com/openvoxproject/vanagon#main')
+  if RUBY_VERSION >= '3.2'
+    gem 'vanagon', *location_for(ENV['VANAGON_LOCATION'] || 'https://github.com/openvoxproject/vanagon#main')
+  end
   gem 'artifactory'
   gem 'json'
   gem 'octokit'
