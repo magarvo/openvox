@@ -37,6 +37,7 @@ namespace :vox do
         glob += "#{os}*"
       end
     end
+    puts "Searching for files with glob #{glob}"
     files = Dir.glob(glob)
     abort 'No files for the given tag found in the output directory.' if files.empty?
 
