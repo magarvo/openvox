@@ -5,7 +5,7 @@ namespace :vox do
     ref = args[:ref]
 
     abort 'You must specify a component.' if component.nil? || component.empty?
-    abort "Could not find configs/components/#{component}.json" unless File.exist?("configs/components/#{component}.json")
+    abort "Could not find configs/components/#{component}.json" unless File.exist?("packaging/configs/components/#{component}.json")
     abort 'You must provide a ref.' if ref.nil? || ref.empty?
 
     if component == 'puppet-runtime'
