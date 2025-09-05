@@ -38,7 +38,7 @@ jobs:
       project_name: ${{ inputs.project_name }}
       platform_list: ${{ inputs.platform_list }}
       vanagon_branch: ${{ inputs.vanagon_branch }}
-      #working_directory: 'packaging'
+      working_directory: 'packaging'
     secrets: inherit
   build_dev:
     if: ${{ github.event.inputs.use_dev == 'true' }}
