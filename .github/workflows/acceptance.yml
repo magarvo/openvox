@@ -86,9 +86,15 @@ permissions:
 
 jobs:
   acceptance:
+    strategy:
+      fail-fast: false
+      matrix:
+        suite-name:
+          - openvox
+          - openvox-agent
     uses: 'OpenVoxProject/shared-actions/.github/workflows/beaker_acceptance.yml@main'
     with:
-      suite-name: openvox
+      suite-name: ${{ matrix.suite-name }}
       ref: ${{ inputs.ref }}
       fork: ${{ inputs.fork }}
       openvox-collection: ${{ inputs.collection }}
