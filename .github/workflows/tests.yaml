@@ -107,11 +107,34 @@ jobs:
 
           bundle exec rake parallel:spec
 
+  rake_checks:
+    name: AIO Package Rake Checks
+    runs-on: ubuntu-24.04
+    steps:
+      # needs fetch-depth because the packaging dem reads old git tags
+      - name: Checkout current PR
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Install Ruby version 3.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Validate code
+        run: |
+          bundle exec rake rubocop
+          bundle exec rake -T | grep vox:build
+          bundle exec rake -T | grep vox:promote
+          bundle exec rake -T | grep vox:upload
+        working-directory: packaging
+
   tests:
     if: always()
     needs:
       - checks
       - rspec_tests
+      - rake_checks
     runs-on: ubuntu-24.04
     name: Test suite
     steps:
